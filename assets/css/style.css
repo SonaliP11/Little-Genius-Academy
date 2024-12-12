@@ -43,7 +43,7 @@ h1, .h1 {
     margin: auto;
     padding: 60px;
     background-color: #fff;
-    border-radius: 100px !important;
+    border-radius: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,6 +117,10 @@ h1, .h1 {
     }
     .game-container-wrap {
         padding: 1rem; /* Adjust padding for mobile devices */
+    }
+    .game-container {
+        padding: 15px; /* Adjust padding for mobile devices */
+        border-radius: 30px; /* Adjust border-radius for mobile devices */
     }
     .inner-container {
         width: 100%; /* Adjust width for mobile devices */

@@ -8,6 +8,7 @@ document.getElementById('nameInput').addEventListener('input', function() {
     }
 });
 
+
 ////logic for maths quiz
 
 
@@ -107,3 +108,11 @@ function playAgain() {
 }
 
 window.onload = loadQuiz;
+=======
+function redirectToCategory() {
+    const nameInput = document.getElementById('nameInput').value.trim();
+    if (nameInput !== '') {
+        window.location.href = `category.html?name=${encodeURIComponent(nameInput)}`;
+    }
+}
+
