@@ -13,30 +13,48 @@
     <script src="https://kit.fontawesome.com/b3e74170fe.js" crossorigin="anonymous"></script>
 
     <title>Little Genius Academy</title>
-   
+
 </head>
 
 <body>
+    <main>
+       <div class="container text-center mt-4" id="gameSelection">
+            <h2>Which game do you want to play first?</h2>
+            <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-success mx-2">Maths</button>
+                <button class="btn btn-info mx-2">English</button>
+            </div>
+        </div>
+        <div class="container text-center mt-4">
+            <h2 id="welcomeMessage"></h2>
+            <h3 id="gameSelection" style="display: flex;"></h3>
+        </div>
 
 
+    </main>
 
-
-<!--
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('name').addEventListener('submit', function (event) {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                if (name) {
-                    document.getElementById('greeting').innerText = 'Well done ' + $name + '!';
-                    document.getElementById('name-input-section').classList.add('d-none');
-                    document.getElementById('game-section').classList.remove('d-none');
-                    startGame(name);
-                }
-            })
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            document.getElementById('welcomeMessage').innerHTML = `<h1>Welcome, ${name}!</h1>`;
+            document.getElementById('welcomeMessage').style.position = 'absolute';
+            document.getElementById('welcomeMessage').style.top = '20px';
+            document.getElementById('welcomeMessage').style.left = '50%';
+            document.getElementById('welcomeMessage').style.transform = 'translateX(-50%)';
+            document.querySelector('.card').style.display = 'none';
+
+            document.querySelector('.hero-part-1').style.display = 'none';
+
         });
     </script>
-    -->
+
+    <!--Bootstarp JS script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+
 </body>
 
 </html>

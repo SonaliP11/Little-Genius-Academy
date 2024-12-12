@@ -1,3 +1,4 @@
+
 let questions = [
     {
       question: "2 + 2 = ?",
@@ -52,3 +53,4 @@ let questions = [
     let progressBarWidth = (currentQuestion / questions.length) * 100;
     document.getElementById("progress-bar-inner").style.width = progressBarWidth + "%";
   }
+
