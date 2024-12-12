@@ -7,9 +7,9 @@ body{
     color: #333;
     background-color: #71d871;
     background-position: center;
-    background-image: url('../images/back2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url('../images/background.png');
+    background-size: auto; /* Adjust this as needed */
+    background-repeat: repeat; /* This will make the background image repeat */
     display: flex;
     justify-content: center;
     align-items: center;
