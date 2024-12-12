@@ -35,3 +35,29 @@ h2, h3, h4, h5, h6 {
     width: 100%;
     z-index: 1000;
 }
+
+/* Game container style */
+.game-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 100px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Logo style */
+.logo {
+    max-height: 248px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        max-height: 150px; /* Adjust this value as needed for smaller screens */
+    }
+}
