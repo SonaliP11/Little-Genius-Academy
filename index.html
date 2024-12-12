@@ -16,7 +16,6 @@
     <title>Little Genius Academy</title>
 </head>
 
-
 <body class="d-flex flex-column min-vh-100">
 
     <!--Navbar-->
@@ -54,36 +53,23 @@
     -->
 <!--Main content with form-->
     <main>
-        
-            <div class="container game-container">
+        <div class="container game-container-wrap">
+            <div class="game-container">
                 <img class="logo" src="assets/images/logo.png" alt="Little Genius Academy Logo">
-                <h2 class="card-title">Hello! What’s your name?</h2>
-                <form id="nameForm" action="welcome.html" method="GET">
-                    <input type="text" id="nameInput" name="name" placeholder="Enter your name" required>
-                    <a href="category.html" type="submit" class="btn btn-primary">Let's Play!</a>
+                <h2 class="h1">Hello! What’s your name?</h2>
+                <form id="nameForm" class="inner-container" action="welcome.html" method="GET">
+                    <input class="text-input" type="text" id="nameInput" name="name" placeholder="Enter your name" required>
+                    <button type="submit" class="btn btn-primary" disabled>Let's Play!</button>
                 </form>
             </div>
-        
+        </div>
     </main>
 
-
-    <!--Bootstarp JS script-->
+    <!--Bootstrap JS script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-
-    // JavaScript to handle form submission and pass the name to the next page
-    const form = document.getElementById('nameForm');
-    form.addEventListener('submit', function(event) {
-        const name = document.getElementById('nameInput').value;
-        if (name) {
-            localStorage.setItem('userName', name); // Store the name in localStorage
-        }
-    });
-
-</script>
-
+    <!-- Custom JS script -->
+    <script src="assets/js/script.js"></script>
 </body>
-
 </html>
