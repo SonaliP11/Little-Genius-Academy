@@ -7,3 +7,10 @@ document.getElementById('nameInput').addEventListener('input', function() {
         submitButton.disabled = true;
     }
 });
+
+function redirectToCategory() {
+    const nameInput = document.getElementById('nameInput').value.trim();
+    if (nameInput !== '') {
+        window.location.href = `category.html?name=${encodeURIComponent(nameInput)}`;
+    }
+}
