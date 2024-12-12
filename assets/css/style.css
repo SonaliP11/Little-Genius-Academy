@@ -52,12 +52,13 @@ h2, h3, h4, h5, h6 {
 
 /* Logo style */
 .logo {
-    max-height: 248px;
+    max-height: 10rem;
     width: auto;
+    margin-bottom: 1.5rem;
 }
 
 @media (max-width: 768px) {
     .logo {
-        max-height: 150px; /* Adjust this value as needed for smaller screens */
+        max-height: 9rem; /* Adjust this value as needed for smaller screens */
     }
 }
