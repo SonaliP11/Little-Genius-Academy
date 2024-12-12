@@ -1,3 +1,4 @@
+// Function to check whether the name is filled in yet
 document.getElementById('nameInput').addEventListener('input', function() {
     const nameInput = document.getElementById('nameInput');
     const submitButton = document.querySelector('.btn-primary');
