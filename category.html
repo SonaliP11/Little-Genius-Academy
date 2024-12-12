@@ -12,18 +12,19 @@
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/b3e74170fe.js" crossorigin="anonymous"></script>
 
-    <title>Little Genius Academy</title>
+    <title>Welcome</title>
 
 </head>
 
 <body>
     <main>
+        <h1>Welcome <span id="userName">Guest</span></h1>
+
        <div class="container text-center mt-4" id="gameSelection">
             <h2>Which game do you want to play first?</h2>
             <div class="d-flex justify-content-center mt-3">
                 <button class="btn btn-success mx-2" onclick="location.href='maths.html'">Maths</button>
                 <button class="btn btn-danger mx-2" onclick="location.href='english.html'">English</button>
-                <button class="btn btn-info mx-2">English</button>
             </div>
         </div>
         <div class="container text-center mt-4">
@@ -31,6 +32,7 @@
         </div>
     </main>
 
+<!--
     <script>
         document.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -44,12 +46,25 @@
             document.querySelector('.hero-part-1').style.display = 'none';
 
         });
-    </script>
+    </script> -->
 
     <!--Bootstarp JS script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
+
+
+    // JavaScript to display the name from localStorage
+    document.addEventListener('DOMContentLoaded', function () {
+        const userName = localStorage.getItem('userName');
+        if (userName) {
+            document.getElementById('userName').textContent = userName;
+        } else {
+            document.getElementById('userName').textContent = 'Guest';
+        }
+    });
+    
+</script>
 
 
 </body>
