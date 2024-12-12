@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Tilt+Warp&display=swap');
 
-body{
-    font-family: 'Poppins', Arial, sans-serif;
+body {
+    font-family: 'Patrick Hand', Arial, sans-serif;
     font-size: 24px;
     line-height: 1.6;
-    color: #333;
-    background-color: #71d871;
+    color: #2E2E2E;
+    background-color: #FFE88A;
     background-position: center;
-    background-image: url('../images/back2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url('../images/background.png');
+    background-size: auto; /* Adjust this as needed */
+    background-repeat: repeat; /* This will make the background image repeat */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,12 +21,12 @@ body{
     box-sizing: border-box;
 }
 
-h1 {
-    font-family: 'Margarine', cursive;
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: 'Patrick Hand', sans-serif;
 }
 
-h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;
+h1, .h1 {
+    margin-bottom: 1.5rem;
 }
 
 /* Make the navbar sticky */
@@ -34,4 +35,94 @@ h2, h3, h4, h5, h6 {
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+/* Game container style */
+.game-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 100px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.game-container-wrap {
+    width: 100vw;
+    height: 100vh;
+    padding: 2.5rem;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.inner-container {
+    width: 80%;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width */
+}
+
+@media (max-height: 800px) {
+    .game-container-wrap {
+        padding: 0.5rem; /* Adjust padding for smaller heights */
+    }
+}
+
+/* Logo style */
+.logo {
+    max-height: 10rem;
+    width: auto;
+    margin-bottom: 1.5rem;
+}
+
+.text-input {
+    background-color: #E1EFFF;
+    border-radius: 50px;
+    font-size: 2.5rem;
+    padding: .5rem;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; /* Center the text */
+    color: #2E2E2E; /* Set the font color */
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    display: block;
+    min-width: 24rem;
+    margin: 0 auto; /* Center align */
+    font-size: 2.5rem;
+    background-color: #68AFFF;
+    box-shadow: 0 8px 0 #489DF9;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary:disabled {
+    background-color: #C6C5CD;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        max-height: 9rem; /* Adjust this value as needed for smaller screens */
+    }
+    .game-container-wrap {
+        padding: 1rem; /* Adjust padding for mobile devices */
+    }
+    .inner-container {
+        width: 100%; /* Adjust width for mobile devices */
+    }
+    .btn-primary {
+        width: 100%; /* Full width on mobile devices */
+        min-width: unset; /* Remove the min-width on mobile devices */
+    }
 }
