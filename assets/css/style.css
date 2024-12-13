@@ -176,7 +176,7 @@ body {
         width: 100%; /* Adjust width for mobile devices */
     }
     .game-title {
-        width: 100%; /* Full width on mobile devices */
+        max-width: 100%; /* Full width on mobile devices */
     }
     .btn-primary {
         width: 100%; /* Full width on mobile devices */
