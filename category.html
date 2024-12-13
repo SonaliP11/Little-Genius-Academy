@@ -12,42 +12,94 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/b3e74170fe.js" crossorigin="anonymous"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <div class="container game-container-wrap">
         <div class="game-container">
-        <h1>Welcome <span id="userName">Guest</span></h1>
+            <img class="game-title mb-4" src="assets/images/title_pick_a_subject.png" alt="Pick a Subject">
+            <h1 class="text-center">Welcome <span id="userName">Guest</span>!<br>Which subject do you want to play with?</h1>
 
-        <div class="container text-center mt-4" id="gameSelection">
-            <h2>Which game do you want to play first?</h2>
-            <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-success mx-2" onclick="location.href='maths.html'">Maths</button>
-                <button class="btn btn-danger mx-2" onclick="location.href='english.html'">English</button>
+            <div class="container text-center mt-4" id="gameSelection">
+                
+                <div class="d-flex justify-content-center mt-3">
+                    <div class="card-subject mx-2" onclick="selectOption(this, 'maths.html')">
+                        <h2>Maths</h2>
+                    </div>
+                    <div class="card-subject mx-2" onclick="selectOption(this, 'english.html')">
+                        <h2>English</h2>
+                    </div>
+                </div>
+                <button id="startButton" class="btn btn-primary mt-4" disabled>Start</button>
+                <a href="index.html" class="btn btn-link mt-4">← Play as another person</a>
             </div>
         </div>
-        <div class="container text-center mt-4">
-            <h2 id="welcomeMessage"></h2>
-        </div>
     </div>
-</div>
 
     <script>
-        // Function to get query parameter value by name
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to get query parameter value by name
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
 
-        // Get the name parameter from the URL
-        const userName = getQueryParam('name');
+            // Get the name parameter from the URL
+            const userName = getQueryParam('name');
+            if (userName) {
+                const userNameElement = document.getElementById('userName');
+                if (userNameElement) {
+                    userNameElement.textContent = userName;
+                }
+            }
 
-        // Update the #userName element with the extracted value
-        if (userName) {
-            document.getElementById('userName').textContent = userName;
-        }
+            const nameInput = document.getElementById('nameInput');
+            if (nameInput) {
+                nameInput.addEventListener('input', function() {
+                    const submitButton = document.querySelector('.btn-primary');
+                    if (nameInput.value.trim() !== '') {
+                        submitButton.disabled = false;
+                    } else {
+                        submitButton.disabled = true;
+                    }
+                });
+            }
+
+            window.redirectToCategory = function() {
+                const nameInput = document.getElementById('nameInput').value.trim();
+                if (nameInput !== '') {
+                    window.location.href = `category.html?name=${encodeURIComponent(nameInput)}`;
+                }
+            };
+        });
+
+        let selectedGameUrl = '';
+
+        window.selectOption = function(element, url) {
+            // Remove 'selected' class from all options
+            document.querySelectorAll('.card-subject').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked option
+            element.classList.add('selected');
+
+            // Enable the Start button
+            const startButton = document.getElementById('startButton');
+            startButton.disabled = false;
+
+            // Store the selected game URL
+            selectedGameUrl = url;
+
+            // Update the Start button's onclick event
+            startButton.onclick = function() {
+                window.location.href = selectedGameUrl;
+            };
+        };
     </script>
-
+    
     <!--Bootstrap JS script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -55,7 +107,5 @@
 
     <!-- Custom JS script -->
     <script src="assets/js/script.js"></script>
-
 </body>
-
 </html>
