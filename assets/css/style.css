@@ -63,6 +63,10 @@ h1, .h1 {
     box-sizing: border-box; /* Ensure padding is included in the element's total width */
 }
 
+.game-title {
+    max-height: 5rem;
+}
+
 @media (max-height: 800px) {
     .game-container-wrap {
         padding: 0.5rem; /* Adjust padding for smaller heights */
@@ -111,6 +115,41 @@ h1, .h1 {
     cursor: not-allowed;
 }
 
+/* Category page style */
+.card-subject {
+    border-radius: 30px;
+    background-color: white;
+    border: 10px solid rgba(255, 232, 138, 0.5); /* FFE88A with 50% opacity */
+    color: #2E2E2E;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card-subject.selected {
+    background-color: #FFD722;
+    color: #2E2E2E;
+    -webkit-text-stroke: 5px #2E2E2E; /* Stroke for selected text */
+}
+
+.card-subject h2 {
+    font-family: 'Tilt Warp', cursive;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.card-subject p {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.card-subject:hover {
+    background-color: #FFD722;
+    color: #2E2E2E;
+    -webkit-text-stroke: 5px #2E2E2E; /* Stroke for hover text */
+}
+
 @media (max-width: 768px) {
     .logo {
         max-height: 9rem; /* Adjust this value as needed for smaller screens */
@@ -124,6 +163,9 @@ h1, .h1 {
     }
     .inner-container {
         width: 100%; /* Adjust width for mobile devices */
+    }
+    .game-title {
+        width: 100%; /* Full width on mobile devices */
     }
     .btn-primary {
         width: 100%; /* Full width on mobile devices */
