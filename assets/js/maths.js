@@ -1,19 +1,70 @@
 const questions = [
-    { question: "What is 5 plus 3?", answers: [6, 7, 8, 9], correct: 2 },
-    { question: "What is 10 minus 4?", answers: [5, 6, 7, 8], correct: 1 },
-    { question: "What is 3 multiplied by 3?", answers: [6, 7, 8, 9], correct: 3 },
-    { question: "What is 12 divided by 4?", answers: [2, 3, 4, 5], correct: 1 }
+    {
+        level: "easy",
+        question: "How many chocolates in total?",
+        answers: [5, 14, 16, 20],
+        correct: 2,
+        image: "assets/images/maths1.png"
+    },
+    {
+        level: "easy",
+        question: "What is the total shown on the two dice?",
+        answers: [5, 7, 6, 8],
+        correct: 1,
+        image: "assets/images/maths2.png"
+    },
+    {
+        level: "easy",
+        question: "How many dogs in total?",
+        answers: [5, 7, 6, 8],
+        correct: 0,
+        image: "assets/images/maths3.png"
+    },
+
+    {
+        level: "medium",
+        question: "What is 3 multiplied by 3?",
+        answers: [6, 7, 8, 9],
+        correct: 3,
+        image: "assets/images/medium1.png"
+    },
+    {
+        level: "medium",
+        question: "What is 12 divided by 4?",
+        answers: [2, 3, 4, 5],
+        correct: 1,
+        image: "assets/images/medium2.png"
+    },
+    {
+        level: "hard",
+        question: "What is 15 plus 27?",
+        answers: [32, 42, 52, 62],
+        correct: 1,
+        image: "assets/images/hard1.png"
+    },
+    {
+        level: "hard",
+        question: "What is 144 divided by 12?",
+        answers: [10, 11, 12, 13],
+        correct: 2,
+        image: "assets/images/hard2.png"
+    }
 ];
 
 let currentQuestion = 0;
+let filteredQuestions = [];
 
-function loadQuiz() {
+function loadQuiz(level) {
     const quizDiv = document.getElementById('quiz');
     quizDiv.innerHTML = ''; // Clear previous quiz content
-    questions.forEach((q, index) => {
+    filteredQuestions = questions.filter(q => q.level === level);
+    filteredQuestions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
-        questionDiv.innerHTML = `<p>${q.question}</p>`;
+        questionDiv.innerHTML = `
+            <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
+            <p>${q.question}</p>
+        `;
         q.answers.forEach((answer, i) => {
             questionDiv.innerHTML += `
                 <div class="answer-card" onclick="selectAnswer(${index}, ${i}, this)">${answer}</div>
@@ -30,13 +81,13 @@ function showQuestion(index) {
         div.style.display = i === index ? 'block' : 'none';
     });
     document.getElementById('prevBtn').style.display = index === 0 ? 'none' : 'inline';
-    document.getElementById('nextBtn').style.display = index === questions.length - 1 ? 'none' : 'inline';
-    document.getElementById('submitBtn').style.display = index === questions.length - 1 ? 'inline' : 'none';
-    updateProgressBar(index);
+    document.getElementById('nextBtn').style.display = index === questionsDivs.length - 1 ? 'none' : 'inline';
+    document.getElementById('submitBtn').style.display = index === questionsDivs.length - 1 ? 'inline' : 'none';
+    updateProgressBar(index, questionsDivs.length);
 }
 
 function nextQuestion() {
-    if (currentQuestion < questions.length - 1) {
+    if (currentQuestion < document.querySelectorAll('.question').length - 1) {
         currentQuestion++;
         showQuestion(currentQuestion);
     }
@@ -56,17 +107,17 @@ function selectAnswer(questionIndex, answerIndex, card) {
     card.dataset.selected = answerIndex;
 
     // Highlight correct and incorrect answers
-    if (answerIndex === questions[questionIndex].correct) {
+    if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
     } else {
         card.classList.add('incorrect');
-        cards[questions[questionIndex].correct].classList.add('correct');
+        cards[filteredQuestions[questionIndex].correct].classList.add('correct');
     }
 }
 
 function submitQuiz() {
     let score = 0;
-    questions.forEach((q, index) => {
+    filteredQuestions.forEach((q, index) => {
         const selectedCard = document.querySelector(`.question:nth-child(${index + 1}) .answer-card.selected`);
         if (selectedCard) {
             const selectedAnswer = parseInt(selectedCard.dataset.selected);
@@ -75,13 +126,13 @@ function submitQuiz() {
             }
         }
     });
-    document.getElementById('score').innerText = `Your score is: ${score} / ${questions.length}`;
+    document.getElementById('score').innerText = `Your score is: ${score} / ${filteredQuestions.length}`;
     document.getElementById('playAgainBtn').style.display = 'inline';
 }
 
-function updateProgressBar(index) {
+function updateProgressBar(index, total) {
     const progress = document.getElementById('progress');
-    const progressPercentage = ((index + 1) / questions.length) * 100;
+    const progressPercentage = ((index + 1) / total) * 100;
     progress.style.width = `${progressPercentage}%`;
 }
 
@@ -89,7 +140,14 @@ function playAgain() {
     currentQuestion = 0;
     document.getElementById('score').innerText = '';
     document.getElementById('playAgainBtn').style.display = 'none';
-    loadQuiz();
+    loadQuiz(document.querySelector('input[name="level"]:checked').value);
 }
 
-window.onload = loadQuiz;
+function selectLevel(level) {
+    currentQuestion = 0;
+    loadQuiz(level);
+}
+
+window.onload = () => {
+    loadQuiz('easy'); // Default level
+};
