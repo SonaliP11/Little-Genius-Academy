@@ -21,6 +21,10 @@ body {
     box-sizing: border-box;
 }
 
+.btn {
+    font-size: 1.5rem;
+}
+
 /* Make the navbar sticky */
 .navbar {
     position: fixed;
