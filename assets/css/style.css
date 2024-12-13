@@ -108,7 +108,7 @@ body {
 
 /* Category page style */
 .card-subject {
-    font-family: 'Tilt Warp', cursive;
+    font-family: 'Tilt Warp', Arial, sans-serif;
     border-radius: 30px;
     background-color: white;
     border: 10px solid rgba(255, 232, 138, 0.5); /* FFE88A with 50% opacity */
@@ -156,8 +156,10 @@ body {
         padding: 1rem; /* Adjust padding for mobile devices */
     }
     .game-container {
-        padding: 15px; /* Adjust padding for mobile devices */
+        padding: 30px 15px; /* Adjust padding for mobile devices */
         border-radius: 30px; /* Adjust border-radius for mobile devices */
+        justify-content: normal;
+        height: auto;
     }
     .inner-container {
         width: 100%; /* Adjust width for mobile devices */
