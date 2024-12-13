@@ -34,27 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-let selectedGameUrl = '';
-
-function selectOption(element, url) {
-    // Remove 'selected' class from all options
-    document.querySelectorAll('card-subject').forEach(option => {
-        option.classList.remove('selected');
-    });
-
-    // Add 'selected' class to the clicked option
-    element.classList.add('selected');
-
-    // Enable the Start button
-    const startButton = document.getElementById('startButton');
-    startButton.disabled = false;
-
-    // Store the selected game URL
-    selectedGameUrl = url;
-}
-
-function startGame() {
-    if (selectedGameUrl) {
-        window.location.href = selectedGameUrl;
     }
 }
+
