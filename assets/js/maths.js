@@ -20,33 +20,55 @@ const questions = [
     correct: 0,
     image: "assets/images/maths3.png"
 },
+{
+    level: "easy",
+    question: "",
+    answers: [1, 3, 2, 5],
+    correct: 0,
+    image: "assets/images/Maths4.png"
+},
+
     {
-        level: "medium",
-        question: "What is three multiplied by three?",
-        answers: ["six", "seven", "eight", "nine"],
+        level: "esay",
+        question: "You have 12 cookies, and you want to share them equally among 4 friends. How many cookies does each friend get?",
+        answers: ["six", "seven", "eight", "three"],
         correct: 3,
-        image: "assets/images/medium1.png"
+        image: "assets/images/maths6.png"
     },
     {
         level: "medium",
-        question: "What is twelve divided by four?",
-        answers: ["two", "three", "four", "five"],
+        question: "What is the missing term in this sequence? 5, 11, ___,23, 29?",
+        answers: ["16", "17", "18", "20"],
         correct: 1,
-        image: "assets/images/medium2.png"
+        image: "assets/images/maths7.png"
     },
     {
         level: "medium",
-        question: "What is fifteen minus seven?",
-        answers: ["six", "seven", "eight", "nine"],
+        question: "What is the rule for this sequence? 99, 96, 93, 90, 87?",
+        answers: ["Add 3", "subtact 2", "subtract 3", "nAdd 2"],
         correct: 2,
-        image: "assets/images/medium3.png"
+        image: "assets/images/maths8.png"
     },
     {
         level: "medium",
-        question: "What is eight multiplied by two?",
+        question: "Would 75 be in this sequence? 44,51,58,65",
         answers: ["fourteen", "fifteen", "sixteen", "seventeen"],
         correct: 2,
-        image: "assets/images/medium4.png"
+        image: "assets/images/maths9.png"
+    },
+    {
+        level: "medium",
+        question: "What is the missing term in this sequence? 12,24,48, ___,192",
+        answers: ["nighty-six", "fifty-six", "seventy-two", "hundred-and-twenty"],
+        correct: 0,
+        image: "assets/images/maths10.png"
+    },
+    {
+        level: "medium",
+        question: "True or false? The seventh term in this sequence is 24?,3, 4, 6, 9, 13.__",
+        answers: ["True", "False"],
+        correct: 0,
+        image: "assets/images/maths11.png"
     },
     {
         level: "hard",
