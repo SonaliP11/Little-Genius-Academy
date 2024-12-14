@@ -124,9 +124,9 @@ function loadQuiz(level) {
                     <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
                 </div>
                 <div class="col-md-8">
-                    <div class="answers-container">
+                    <div class="answers-container d-flex flex-wrap">
                         ${q.answers.map((answer, i) => `
-                            <div class="answer-card mb-2" onclick="selectAnswer(${index}, ${i}, this)">${answer}</div>
+                            <div class="col-12 col-md-6 p-2"><div class="answer-card mb-2 col-12" onclick="selectAnswer(${index}, ${i}, this)">${answer}</div></div>
                         `).join('')}
                     </div>
                 </div>
