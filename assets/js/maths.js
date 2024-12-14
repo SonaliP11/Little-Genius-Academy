@@ -1,51 +1,64 @@
 const questions = [
-    {
-        level: "easy",
-        question: "How many chocolates in total?",
-        answers: [5, 14, 16, 20],
-        correct: 2,
-        image: "assets/images/maths1.png"
-    },
-    {
-        level: "easy",
-        question: "What is the total shown on the two dice?",
-        answers: [5, 7, 6, 8],
-        correct: 1,
-        image: "assets/images/maths2.png"
-    },
-    {
-        level: "easy",
-        question: "How many dogs in total?",
-        answers: [5, 7, 6, 8],
-        correct: 0,
-        image: "assets/images/maths3.png"
-    },
-
+{
+    level: "easy",
+    question: "How many chocolates in total?",
+    answers: [5, 14, 16, 20],
+    correct: 2,
+    image: "assets/images/maths1.png"
+},
+{
+    level: "easy",
+    question: "What is the total shown on the two dice?",
+    answers: [5, 7, 6, 8],
+    correct: 1,
+    image: "assets/images/maths2.png"
+},
+{
+    level: "easy",
+    question: "How many dogs in total?",
+    answers: [5, 7, 6, 8],
+    correct: 0,
+    image: "assets/images/maths3.png"
+},
     {
         level: "medium",
-        question: "What is 3 multiplied by 3?",
-        answers: [6, 7, 8, 9],
+        question: "What is three multiplied by three?",
+        answers: ["six", "seven", "eight", "nine"],
         correct: 3,
         image: "assets/images/medium1.png"
     },
     {
         level: "medium",
-        question: "What is 12 divided by 4?",
-        answers: [2, 3, 4, 5],
+        question: "What is twelve divided by four?",
+        answers: ["two", "three", "four", "five"],
         correct: 1,
         image: "assets/images/medium2.png"
     },
     {
+        level: "medium",
+        question: "What is fifteen minus seven?",
+        answers: ["six", "seven", "eight", "nine"],
+        correct: 2,
+        image: "assets/images/medium3.png"
+    },
+    {
+        level: "medium",
+        question: "What is eight multiplied by two?",
+        answers: ["fourteen", "fifteen", "sixteen", "seventeen"],
+        correct: 2,
+        image: "assets/images/medium4.png"
+    },
+    {
         level: "hard",
-        question: "What is 15 plus 27?",
-        answers: [32, 42, 52, 62],
-        correct: 1,
+        question: "What is fifteen plus twenty-seven?",
+        answers: ["thirty-two", "forty-two", "fifty-two", "sixty-two"],
+        correct: 0,
         image: "assets/images/hard1.png"
     },
     {
         level: "hard",
-        question: "What is 144 divided by 12?",
-        answers: [10, 11, 12, 13],
+        question: "What is one hundred forty-four divided by twelve?",
+        answers: ["ten", "eleven", "twelve", "thirteen"],
         correct: 2,
         image: "assets/images/hard2.png"
     }
@@ -127,6 +140,9 @@ function submitQuiz() {
         }
     });
     document.getElementById('score').innerText = `Your score is: ${score} / ${filteredQuestions.length}`;
+    if (score === filteredQuestions.length) {
+        document.getElementById('congratsMessage').style.display = 'block';
+    }
     document.getElementById('playAgainBtn').style.display = 'inline';
 }
 
@@ -139,8 +155,9 @@ function updateProgressBar(index, total) {
 function playAgain() {
     currentQuestion = 0;
     document.getElementById('score').innerText = '';
+    document.getElementById('congratsMessage').style.display = 'none';
     document.getElementById('playAgainBtn').style.display = 'none';
-    loadQuiz(document.querySelector('input[name="level"]:checked').value);
+    loadQuiz(document.querySelector('input[name="level"]:checked')?.value || 'easy');
 }
 
 function selectLevel(level) {
