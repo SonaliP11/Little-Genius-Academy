@@ -118,28 +118,31 @@ function loadQuiz(level) {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
-            <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
-            <p>${q.question}</p>
+            <h1>${q.question}</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-8">
+                    <div class="answers-container">
+                        ${q.answers.map((answer, i) => `
+                            <div class="answer-card mb-2" onclick="selectAnswer(${index}, ${i}, this)">${answer}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
         `;
-        q.answers.forEach((answer, i) => {
-            questionDiv.innerHTML += `
-                <div class="answer-card" onclick="selectAnswer(${index}, ${i}, this)">${answer}</div>
-            `;
-        });
         quizDiv.appendChild(questionDiv);
     });
     showQuestion(currentQuestion);
 }
 
 function showQuestion(index) {
-    const questionsDivs = document.querySelectorAll('.question');
-    questionsDivs.forEach((div, i) => {
-        div.style.display = i === index ? 'block' : 'none';
+    const questions = document.querySelectorAll('.question');
+    questions.forEach((question, i) => {
+        question.style.display = i === index ? 'block' : 'none';
     });
-    document.getElementById('prevBtn').style.display = index === 0 ? 'none' : 'inline';
-    document.getElementById('nextBtn').style.display = index === questionsDivs.length - 1 ? 'none' : 'inline';
-    document.getElementById('submitBtn').style.display = index === questionsDivs.length - 1 ? 'inline' : 'none';
-    updateProgressBar(index, questionsDivs.length);
+    updateProgressBar(index, filteredQuestions.length);
 }
 
 function nextQuestion() {
@@ -158,7 +161,7 @@ function prevQuestion() {
 
 function selectAnswer(questionIndex, answerIndex, card) {
     const cards = document.querySelectorAll(`.question:nth-child(${questionIndex + 1}) .answer-card`);
-    cards.forEach(card => card.classList.remove('selected'));
+    cards.forEach(card => card.classList.remove('selected', 'correct', 'incorrect'));
     card.classList.add('selected');
     card.dataset.selected = answerIndex;
 
