@@ -27,15 +27,9 @@ const questions = [
     correct: 0,
     image: "assets/images/Maths4.png"
 },
-{
-    level: "easy",
-    question: "Each star sticker costs 2 dollars. If you buy 6 star stickers, how much money do you spend in total?",
-    answers: [12, 10, 6, 8],
-    correct: 0,
-    image: "assets/images/maths5.png"
-},
+
     {
-        level: "medium",
+        level: "esay",
         question: "You have 12 cookies, and you want to share them equally among 4 friends. How many cookies does each friend get?",
         answers: ["six", "seven", "eight", "three"],
         correct: 3,
@@ -68,6 +62,13 @@ const questions = [
         answers: ["nighty-six", "fifty-six", "seventy-two", "hundred-and-twenty"],
         correct: 0,
         image: "assets/images/maths10.png"
+    },
+    {
+        level: "medium",
+        question: "True or false? The seventh term in this sequence is 24?,3, 4, 6, 9, 13.__",
+        answers: ["True", "False"],
+        correct: 0,
+        image: "assets/images/maths11.png"
     },
     {
         level: "hard",
