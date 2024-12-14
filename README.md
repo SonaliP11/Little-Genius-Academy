@@ -1,131 +1,193 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Little Genius Academy
+Welcome to Little Genius Academy! An interactive, gamified and safe learning platform for kids aged 5-7 that helps them practice English/Math concepts through fun quizzes and challenges while providing progress tracking.
+
+## Purpose
+The purpose of Little Genius Academy is to provide a fun and engaging learning platform for young children. Our goal is to foster creativity, critical thinking, and a love for learning through interactive activities and educational games. We aim to support parents and educators in nurturing the intellectual and emotional growth of children in a safe and supportive environment.
+
+This project is built using HTML, CSS, and JavaScript. "Little Genius Academy" has been developed as part of Code Institute's Full-Stack Software Development Bootcamp as our 1st heckathon project. 
+
+## Responsive Image
+
+Am I responsive image
+
+## User Experience (UX Design)
+
+
+### User Stories
+
+We used Miro board for user stories and brainstorming sessions. This tool helped us collaborate effectively, visualize our ideas, and organize our thoughts in a structured manner.
+
+#### Primary / Secondary Users
+
+![Users](assets/images/miro1.png)
+
+#### Identify User Needs
+
+![User Needs](assets/images/miro2.png)
+
+#### MoSCoW Prioritization
+
+![MoSCoW Prioritization](assets/images/miro3.png)
+
+#### Summary
+
+![Summary](assets/images/miro4.png)
+
+#### High+level Project Idea
+
+![High-level Project Idea](assets/images/miro5.png)
+
+
+## Design
+
+### Color Scheme
+Our color scheme is designed to be visually appealing and engaging for young children. We use bright, vibrant colors to capture their attention and create a fun learning environment.
+![Color](assets/images/Color.png)
+
+### Typography
+We use child-friendly fonts that are easy to read and visually appealing. Our primary font is Patrick Hand and heading font is Tilt Warp, which is playful and suitable for our target audience.
+![Typography](assets/images/font.png)
 
 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### Wireframes
+Wireframes were created to plan the layout and structure of our platform. These wireframes helped us ensure a user-friendly interface and a seamless user experience.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
 
-## Gitpod Reminders
+## Technologies Used
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+###Languages Used
 
-`python3 -m http.server`
+- HTML
+- CSS
+- JavaScript
 
-A blue button should appear to click: _Make Public_,
+### Frameworks, Libraries and Programs Used
 
-Another blue button should appear to click: _Open Browser_.
+- Bootstrap 5.3: Used for responsive design and styling.
+- Google Fonts: Used to import the 'Outfit' and 'Funnel Sans' fonts.
+- Font Awesome: Used for icons to enhance the visual appeal.
+- Git: Used for version control.
+- GitHub: Used to host the repository and deploy the website.
+- Balsamiq: Used for creating wireframes.
+- Google DevTools: Used for debugging and testing the website.
+- Am I Responsive: Used to test the responsiveness of the website across different devices.
+- Unsplash: Used for sourcing high-quality, royalty-free images to enhance the visual appeal of the website.
+- Google Images: Used for finding images and inspiration for the website's design.
+- Snipping Tool: Used for capturing screenshots during the development process.
+- Chat GPT: Used for creating user stories
+- Copilot: Used in coding some parts
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+A great tip for this section is to include them as you use them, that way you won't forget what you ended up using when you get to the end of your project.
 
-A blue button should appear to click: _Make Public_,
+## Deployment
 
-Another blue button should appear to click: _Open Browser_.
+### GitHub Pages
+The project is deployed using GitHub Pages. GitHub Pages allows you to host your website directly from your GitHub repository. To deploy the project, follow these steps:
+1. Ensure your repository has an `index.html` file at the root.
+2. Navigate to the repository settings.
+3. Scroll down to the "GitHub Pages" section.
+4. Select the branch you want to deploy from (usually `main` or `master`).
+5. Click "Save" and your site will be published at `https://<username>.github.io/<repository-name>/`.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Local Development
 
-To log into the Heroku toolbelt CLI:
+### Prerequisites
+To run this project locally, you need to have the following installed on your machine:
+- Git
+- A code editor (e.g., Visual Studio Code)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Running the Project
+Since this project is built with HTML, CSS, and JavaScript, you can simply open the `index.html` file in your web browser to view the project. Alternatively, you can use a live server extension in your code editor to serve the project locally.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+### Making Changes
+1. Open the project in your code editor.
+2. Make your changes to the code.
+3. Save the files.
 
-### Connecting your Mongo database
+### Committing and Pushing Changes when working in team
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+1. **Create a New Branch**
+  Before making any changes, create a new branch for your work:
+  ```bash
+  git checkout -b <branch-name>
+  ```
 
-------
+2. **Make Changes**
+  Make your changes in the new branch. Ensure that your changes are well-documented and tested.
 
-## Release History
+3. **Commit Changes**
+  Add and commit your changes with a descriptive message:
+  ```bash
+  git add .
+  git commit -m "Description of changes"
+  ```
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+4. **Push Changes**
+  Push your branch to the remote repository:
+  ```bash
+  git push origin <branch-name>
+  ```
 
-**June 18, 2024,** Add Mongo back into template
+5. **Create a Pull Request**
+  Go to the repository on GitHub and create a pull request. Describe the changes you made and request a review from your team members.
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+6. **Code Review**
+  Team members should review the pull request, provide feedback, and request changes if necessary. Once approved, the pull request can be merged into the main branch.
 
-**May 28 2024:** Fix Mongo and Links installs
+7. **Merge Changes**
+  After the pull request is approved, merge the changes into the main branch:
+  ```bash
+  git checkout main
+  git pull origin main
+  git merge <branch-name>
+  ```
 
-**April 26 2024:** Update node version to 16
+8. **Update Local Repository**
+  Ensure your local repository is up-to-date with the main branch:
+  ```bash
+  git pull origin main
+  ```
 
-**September 20 2023:** Update Python version to 3.9.17.
+By following these steps, you can effectively collaborate with your team and maintain a clean and organized codebase.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Testing
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Manual Testing & Automatic Testing
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+### Validators
+This code has been validated through HTML and CSS validators, and necessary changes have been made accordingly.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+#### CSS Validator
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+#### HTML Validator
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Credits
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Content References
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+#### Copilot
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+- I utilized GitHub Copilot to assist in generating content for the website.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Educational sites
+ 
+- Education Quizzes - Some questions were taken from there.
+- Google search engine
 
-------
+## Future features
 
-## FAQ about the uptime script
+## Acknowledgement
+ 
+- We would like to extend our heartfelt thanks to Code Institute for providing this incredible platform and the opportunity to develop "Little Genius Academy."
 
-**Why have you added this script?**
+- Special thanks to the instructors and mentors - Emma Lamont, Spencer and Ruairidh MacArthur for their invaluable guidance and support throughout the process.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- We would also like to express our gratitude to our amazing team for their hard work, dedication, and collaboration in bringing "Little Genius Academy" to life.
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
