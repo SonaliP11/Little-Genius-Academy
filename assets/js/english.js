@@ -216,6 +216,11 @@ function updateLevelLabel() {
     levelLabel.textContent = `${currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1)}`;
 }
 
+function updateBackToSubjectsLink() {
+    const backToSubjectsBtn = document.getElementById('backToSubjectsBtn');
+    backToSubjectsBtn.href = `category.html?name=${encodeURIComponent(userName)}`;
+}
+
 function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML += `
@@ -253,4 +258,5 @@ function selectLevel(level) {
 
 window.onload = () => {
     loadQuiz('easy'); // Default level
+    updateBackToSubjectsLink(); // Ensure the link is updated after the DOM is loaded and userName is set
 };

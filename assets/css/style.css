@@ -50,7 +50,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    max-height: 50rem;
+    max-height: 60rem;
     overflow: hidden; /* Ensure contents do not exceed the border */
 }
 
@@ -222,7 +222,7 @@ body {
     background-color: #FDC851;
     height: 100%;
     transition: width 0.6s ease;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
 }
 
 /* Quiz layout */
