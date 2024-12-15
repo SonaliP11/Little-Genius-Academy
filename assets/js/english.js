@@ -168,12 +168,12 @@ function selectAnswer(questionIndex, answerIndex, card) {
     
     if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
-        feedbackDiv.innerHTML = `Fantastic job, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.innerHTML = `Fantastic job, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
         correctAttempts++;
     } else {
         card.classList.add('incorrect');
-        feedbackDiv.innerHTML = `No worries, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.innerHTML = `No worries, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#E94F3A'; // Red color for incorrect answer
         wrongAttempts++;
     }
@@ -226,7 +226,7 @@ function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML += `
         <div id="levelUpMessage" class="level-up-message">
-            Excellent job, ${encodeURIComponent(userName)}!<br>Now let’s level up!
+            Excellent job, ${decodeURIComponent(userName)}!<br>Now let’s level up!
         </div>
     `;
     setTimeout(() => {
