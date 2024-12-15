@@ -27,88 +27,18 @@ const questions = [
         correct: 3,
         image: "assets/images/drill.jpg",
     },
-    {
-        level: "easy",
-        question: "Find adjective: The Queen lived in a grand palace.",
-        answers: ["Queen", "lived", "grand", "palace"],
-        correct: 2,
-        image: "assets/images/queen.jpg",
-    },
-    {
-        level: "medium",
-        question: "Find adverb: He shouted loudly for help.",
-        answers: ["shouted", "loudly", "for", "help"],
-        correct: 1,
-        image: "assets/images/shout.jpg",
-    },
-    {
-        level: "medium",
-        question: "Find adverb: She tried hard, but failed to hit the target.",
-        answers: ["tried", "hard", "failed", "hit"],
-        correct: 1,
-        image: "assets/images/target.jpg",
-    },
-    {
-        level: "medium",
-        question: "Find adverb: She whispered the secret carefully into her best friend's ear.",
-        answers: ["whispered", "carefully", "secret", "best"],
-        correct: 1,
-        image: "assets/images/whisper.jpg",
-    },
-    {
-        level: "medium",
-        question: "Find adverb: The team played poorly because many players were injured.",
-        answers: ["team", "played", "poorly", "injured"],
-        correct: 2,
-        image: "assets/images/team.jpg",
-    },
-    {
-        level: "medium",
-        question: "Find adverb: Slipping on the treacherous ice, my sister landed awkwardly.",
-        answers: ["slipping", "treacherous", "awkwardly", "landed"],
-        correct: 2,
-        image: "assets/images/ice.jpg",
-    },
-    {
-        level: "hard",
-        question: "Which one of the following expresses an opinion?",
-        answers: ["Is it Friday today?", "My cousin's name is Edward.", "Hot chocolate is delicious.", "Stop shouting!"],
-        correct: 2,
-        image: "assets/images/chocolate.jpg",
-    },
-    {
-        level: "hard",
-        question: "Which one of the following is NOT an opinion?",
-        answers: ["My sister is not very good at sports.", "What time is it?" ,"The moon is beautiful", 
-                   "Mountain climbing is an exciting activity."],
-        correct: 3,
-        image: "assets/images/mountain.jpg",
-    },
-    {
-        level: "hard",
-        question: "Which one of the following is an opinion?",
-        answers: ["The gallery is free to enter.", "The sun is shining.", "Clouds are grey", "The train is late."],
-        correct: 0,
-        image: "assets/images/art.jpg",
-    },
-    {
-        level: "hard",
-        question: "Which one of the following is a fact?",
-        answers: ["Mondays are boring.", "What time is it?", "How old are you?", "A sundial uses the position of the sun to show the time of day."],
-        correct: 3,
-        image: "assets/images/moon.jpg",
-    },
-    {
-        level: "hard",
-        question: "Which one of the following expresses an opinion?",
-        answers: ["Is it Friday today?", "Rugby is more enjoyable than football.", "The sun is not shinning", "Stop shouting!"],
-        correct: 1,
-        image: "assets/images/rugby.jpg",
-    },
+    // Add more questions as needed
 ];
 
 let currentQuestion = 0;
 let filteredQuestions = [];
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+const userName = getQueryParam('name');
 
 function loadQuiz(level) {
     const quizDiv = document.getElementById('quiz');
@@ -119,6 +49,7 @@ function loadQuiz(level) {
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
             <h1 class="text-center">${q.question}</h1>
+            <div id="feedback-${index}" class="feedback text-center mt-3"></div>
             <div class="row">
                 <div class="d-flex justify-content-center align-items-center col-12 col-md-4">
                     <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
@@ -167,14 +98,16 @@ function selectAnswer(questionIndex, answerIndex, card) {
     const cards = document.querySelectorAll(`.question:nth-child(${questionIndex + 1}) .answer-card`);
     cards.forEach(card => card.classList.remove('selected', 'correct', 'incorrect'));
     card.classList.add('selected');
-    card.dataset.selected = answerIndex;
-
-    // Highlight correct and incorrect answers
+    const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
     if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
+        feedbackDiv.innerHTML = `Fantastic job, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
     } else {
         card.classList.add('incorrect');
         cards[filteredQuestions[questionIndex].correct].classList.add('correct');
+        feedbackDiv.innerHTML = `No worries, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.style.color = '#68AFFF'; // Blue color for incorrect answer
     }
 }
 

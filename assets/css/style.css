@@ -293,3 +293,10 @@ body {
     right: 10px;
     color: #E94F3A;
 }
+
+/* Feedback message style */
+.feedback {
+    font-family: 'Tilt Warp', cursive;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
