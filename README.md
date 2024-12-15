@@ -53,6 +53,12 @@ We use child-friendly fonts that are easy to read and visually appealing. Our pr
 ### Wireframes
 Wireframes were created to plan the layout and structure of our platform. These wireframes helped us ensure a user-friendly interface and a seamless user experience.
 
+#### Desktop Wireframe Basic
+![Wireframe basic](assets/images/wireframe1.png)
+
+#### Desktop Wireframe Background
+![Wireframe background](assets/images/wireframe2.png)
+
 
 ## Technologies Used
 
