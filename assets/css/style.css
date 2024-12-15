@@ -321,7 +321,6 @@ body {
 #levelLabel {
     font-family: 'Tilt Warp', Arial, sans-serif;
     background-color: #FFD722;
-    border-radius: 50%;
     box-shadow: 8px 8px 0 #FDC851;
     z-index: 999;
 }
