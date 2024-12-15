@@ -79,16 +79,16 @@ const questions = [
     {
         level: "hard",
         question: "Which one of the following is NOT an opinion?",
-        answers: ["My sister is not very good at sports.", "What time is it?" ,"The moon is beautiful", 
+        answers: ["My sister is not very good at sports.", "What time is it?" ,"The moon is beautiful.", 
                    "Mountain climbing is an exciting activity."],
-        correct: 3,
+        correct: 1,
         image: "assets/images/mountain.jpg",
     },
     {
         level: "hard",
         question: "Which one of the following is an opinion?",
-        answers: ["The gallery is free to enter.", "The sun is shining.", "Clouds are grey", "The train is late."],
-        correct: 0,
+        answers: ["The gallery is free to enter.", "The sun is shining.", "Clouds are grey.", "The train is late."],
+        correct: 1,
         image: "assets/images/art.jpg",
     },
     {
@@ -101,7 +101,7 @@ const questions = [
     {
         level: "hard",
         question: "Which one of the following expresses an opinion?",
-        answers: ["Is it Friday today?", "Rugby is more enjoyable than football.", "The sun is not shinning", "Stop shouting!"],
+        answers: ["Is it Friday today?", "Rugby is more enjoyable than football.", "The sun is not shinning.", "Stop shouting!"],
         correct: 1,
         image: "assets/images/rugby.jpg",
     },
@@ -127,6 +127,7 @@ function loadQuiz(level) {
     renderQuiz();
     resetProgressBar();
     updateLevelLabel();
+    updateBackToSubjectsLink();
 }
 
 function renderQuiz() {
@@ -237,11 +238,17 @@ function showLevelUpMessage(nextLevel) {
 function submitQuiz() {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML = `
-        <h1 class="text-center">Quiz Completed!</h1>
+        <h1 class="h1 text-center">Quiz Completed!</h1>
         <p class="text-center">Correct Attempts: ${correctAttempts}</p>
         <p class="text-center">Wrong Attempts: ${wrongAttempts}</p>
         <div class="text-center">
             <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+            <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-link mt-2">
+                ← Back to Subjects
+            </a>
+            <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-lg rounded-circle position-absolute top-0 end-0 m-3 m-md-5">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
         </div>
     `;
 }
