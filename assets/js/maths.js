@@ -45,15 +45,15 @@ const questions = [
     {
         level: "medium",
         question: "What is the rule for this sequence? 99, 96, 93, 90, 87?",
-        answers: ["Add 3", "subtact 2", "subtract 3", "nAdd 2"],
+        answers: ["Add 3", "subtact 2", "subtract 3", "Add 2"],
         correct: 2,
         image: "assets/images/maths8.png"
     },
     {
         level: "medium",
         question: "Would 75 be in this sequence? 44,51,58,65",
-        answers: ["fourteen", "fifteen", "sixteen", "seventeen"],
-        correct: 2,
+        answers: ["True", "False"],
+        correct: 1,
         image: "assets/images/maths9.png"
     },
     {
@@ -65,7 +65,7 @@ const questions = [
     },
     {
         level: "medium",
-        question: "True or false? The seventh term in this sequence is 24?,3, 4, 6, 9, 13.__",
+        question: "True or false? The seventh term in this sequence is 24?,3, 4, 6, 9, 13,__",
         answers: ["True", "False"],
         correct: 0,
         image: "assets/images/maths11.png"
