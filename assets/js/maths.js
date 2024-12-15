@@ -126,6 +126,8 @@ function loadQuiz(level) {
     filteredQuestions = questions.filter(q => q.level === level);
     renderQuiz();
     resetProgressBar();
+    updateLevelLabel();
+    updateBackToSubjectsLink();
 }
 
 function renderQuiz() {
@@ -166,12 +168,12 @@ function selectAnswer(questionIndex, answerIndex, card) {
     
     if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
-        feedbackDiv.innerHTML = `Fantastic job, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.innerHTML = `Fantastic job, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
         correctAttempts++;
     } else {
         card.classList.add('incorrect');
-        feedbackDiv.innerHTML = `No worries, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.innerHTML = `No worries, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#E94F3A'; // Red color for incorrect answer
         wrongAttempts++;
     }
@@ -210,11 +212,21 @@ function resetProgressBar() {
     progress.style.width = '0%';
 }
 
+function updateLevelLabel() {
+    const levelLabel = document.getElementById('levelLabel');
+    levelLabel.textContent = `${currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1)}`;
+}
+
+function updateBackToSubjectsLink() {
+    const backToSubjectsBtn = document.getElementById('backToSubjectsBtn');
+    backToSubjectsBtn.href = `category.html?name=${encodeURIComponent(userName)}`;
+}
+
 function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML += `
         <div id="levelUpMessage" class="level-up-message">
-            Excellent job, ${encodeURIComponent(userName)}!<br>Now let’s level up!
+            Excellent job, ${decodeURIComponent(userName)}!<br>Now let’s level up!
         </div>
     `;
     setTimeout(() => {
@@ -226,11 +238,17 @@ function showLevelUpMessage(nextLevel) {
 function submitQuiz() {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML = `
-        <h1 class="text-center">Quiz Completed!</h1>
+        <h1 class="h1 text-center">Quiz Completed!</h1>
         <p class="text-center">Correct Attempts: ${correctAttempts}</p>
         <p class="text-center">Wrong Attempts: ${wrongAttempts}</p>
         <div class="text-center">
             <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+            <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-link mt-4">
+                ← Back to Subjects
+            </a>
+            <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-lg rounded-circle position-absolute top-0 end-0 m-3 m-md-5">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
         </div>
     `;
 }
@@ -247,4 +265,5 @@ function selectLevel(level) {
 
 window.onload = () => {
     loadQuiz('easy'); // Default level
+    updateBackToSubjectsLink(); // Ensure the link is updated after the DOM is loaded and userName is set
 };
