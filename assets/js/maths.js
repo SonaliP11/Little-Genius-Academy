@@ -67,6 +67,13 @@ const questions = [
 let currentQuestion = 0;
 let filteredQuestions = [];
 
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+const userName = getQueryParam('name');
+
 function loadQuiz(level) {
     const quizDiv = document.getElementById('quiz');
     quizDiv.innerHTML = ''; // Clear previous quiz content
@@ -75,16 +82,17 @@ function loadQuiz(level) {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
-            <h1>${q.question}</h1>
+            <h1 class="text-center">${q.question}</h1>
+            <div id="feedback-${index}" class="feedback text-center mt-3"></div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="d-flex justify-content-center align-items-center col-12 col-md-4">
                     <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
                 </div>
                 <div class="col-md-8">
                     <div class="answers-container d-flex flex-wrap">
                         ${q.answers.map((answer, i) => `
                             <div class="col-12 col-md-6 p-2">
-                                <div class="answer-card p-2 d-flex justify-content-center align-items-center" onclick="selectAnswer(${index}, ${i}, this)">
+                                <div class="answer-card h2 p-2 d-flex justify-content-center align-items-center" onclick="selectAnswer(${index}, ${i}, this)">
                                     ${answer}
                                 </div>
                             </div>
@@ -92,6 +100,7 @@ function loadQuiz(level) {
                     </div>
                 </div>
             </div>
+            <div id="feedback-${index}" class="feedback mt-3"></div>
         `;
         quizDiv.appendChild(questionDiv);
     });
@@ -124,14 +133,16 @@ function selectAnswer(questionIndex, answerIndex, card) {
     const cards = document.querySelectorAll(`.question:nth-child(${questionIndex + 1}) .answer-card`);
     cards.forEach(card => card.classList.remove('selected', 'correct', 'incorrect'));
     card.classList.add('selected');
-    card.dataset.selected = answerIndex;
-
-    // Highlight correct and incorrect answers
+    const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
     if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
+        feedbackDiv.innerHTML = `Fantastic job, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
     } else {
         card.classList.add('incorrect');
         cards[filteredQuestions[questionIndex].correct].classList.add('correct');
+        feedbackDiv.innerHTML = `No worries, ${encodeURIComponent(userName)}!`;
+        feedbackDiv.style.color = '#68AFFF'; // Blue color for incorrect answer
     }
 }
 
