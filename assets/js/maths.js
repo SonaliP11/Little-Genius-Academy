@@ -72,17 +72,38 @@ const questions = [
     },
     {
         level: "hard",
-        question: "What is fifteen plus twenty-seven?",
-        answers: ["thirty-two", "forty-two", "fifty-two", "sixty-two"],
-        correct: 0,
-        image: "assets/images/hard1.png"
+        question: "What time is shown on the clock?",
+        answers: ["11:10", "11:20", "11:30", "11:40"],
+        correct: 2,
+        image: "assets/images/maths12.png"
     },
     {
         level: "hard",
-        question: "What is one hundred forty-four divided by twelve?",
-        answers: ["ten", "eleven", "twelve", "thirteen"],
-        correct: 2,
-        image: "assets/images/hard2.png"
+        question: "What time is shown on the clock?",
+        answers: ["7:25", "7:20", "7:35", "8:00"],
+        correct: 0,
+        image: "assets/images/maths13.png"
+    },
+    {
+        level: "hard",
+        question: "What time is shown on the clock?",
+        answers: ["8:40", "9:45", "9:40", "7:55"],
+        correct: 0,
+        image: "assets/images/maths14.png"
+    },
+    {
+        level: "hard",
+        question: "Which clock shows the time twenty to five?",
+        answers: ["a", "b", "c"],
+        correct: 1,
+        image: "assets/images/maths15.png"
+    },
+    {
+        level: "hard",
+        question: "How many minutes are there between twenty-five to nine and five to nine?",
+        answers: ["25", "10", "15", "20"],
+        correct: 3,
+        image: "assets/images/maths16.png"
     }
 ];
 
