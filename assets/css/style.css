@@ -218,9 +218,10 @@ body {
 }
 
 .progress-bar {
-    background-color: #007bff;
+    background-color: #FFD722;
     height: 100%;
     transition: width 0.6s ease;
+    border-radius: 10px;
 }
 
 /* Quiz layout */
@@ -299,4 +300,19 @@ body {
     font-family: 'Tilt Warp', cursive;
     font-size: 1.2rem;
     margin-top: 10px;
+}
+
+/* Level-up message style */
+.level-up-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #4DB945;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    z-index: 1000;
 }

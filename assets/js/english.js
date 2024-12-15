@@ -27,11 +27,91 @@ const questions = [
         correct: 3,
         image: "assets/images/drill.jpg",
     },
-    // Add more questions as needed
+    {
+        level: "easy",
+        question: "Find adjective: The Queen lived in a grand palace.",
+        answers: ["Queen", "lived", "grand", "palace"],
+        correct: 2,
+        image: "assets/images/queen.jpg",
+    },
+    {
+        level: "medium",
+        question: "Find adverb: He shouted loudly for help.",
+        answers: ["shouted", "loudly", "for", "help"],
+        correct: 1,
+        image: "assets/images/shout.jpg",
+    },
+    {
+        level: "medium",
+        question: "Find adverb: She tried hard, but failed to hit the target.",
+        answers: ["tried", "hard", "failed", "hit"],
+        correct: 1,
+        image: "assets/images/target.jpg",
+    },
+    {
+        level: "medium",
+        question: "Find adverb: She whispered the secret carefully into her best friend's ear.",
+        answers: ["whispered", "carefully", "secret", "best"],
+        correct: 1,
+        image: "assets/images/whisper.jpg",
+    },
+    {
+        level: "medium",
+        question: "Find adverb: The team played poorly because many players were injured.",
+        answers: ["team", "played", "poorly", "injured"],
+        correct: 2,
+        image: "assets/images/team.jpg",
+    },
+    {
+        level: "medium",
+        question: "Find adverb: Slipping on the treacherous ice, my sister landed awkwardly.",
+        answers: ["slipping", "treacherous", "awkwardly", "landed"],
+        correct: 2,
+        image: "assets/images/ice.jpg",
+    },
+    {
+        level: "hard",
+        question: "Which one of the following expresses an opinion?",
+        answers: ["Is it Friday today?", "My cousin's name is Edward.", "Hot chocolate is delicious.", "Stop shouting!"],
+        correct: 2,
+        image: "assets/images/chocolate.jpg",
+    },
+    {
+        level: "hard",
+        question: "Which one of the following is NOT an opinion?",
+        answers: ["My sister is not very good at sports.", "What time is it?" ,"The moon is beautiful", 
+                   "Mountain climbing is an exciting activity."],
+        correct: 3,
+        image: "assets/images/mountain.jpg",
+    },
+    {
+        level: "hard",
+        question: "Which one of the following is an opinion?",
+        answers: ["The gallery is free to enter.", "The sun is shining.", "Clouds are grey", "The train is late."],
+        correct: 0,
+        image: "assets/images/art.jpg",
+    },
+    {
+        level: "hard",
+        question: "Which one of the following is a fact?",
+        answers: ["Mondays are boring.", "What time is it?", "How old are you?", "A sundial uses the position of the sun to show the time of day."],
+        correct: 3,
+        image: "assets/images/moon.jpg",
+    },
+    {
+        level: "hard",
+        question: "Which one of the following expresses an opinion?",
+        answers: ["Is it Friday today?", "Rugby is more enjoyable than football.", "The sun is not shinning", "Stop shouting!"],
+        correct: 1,
+        image: "assets/images/rugby.jpg",
+    },
 ];
 
 let currentQuestion = 0;
 let filteredQuestions = [];
+let correctAttempts = 0;
+let wrongAttempts = 0;
+let currentLevel = 'easy';
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -41,12 +121,20 @@ function getQueryParam(param) {
 const userName = getQueryParam('name');
 
 function loadQuiz(level) {
+    currentLevel = level;
+    currentQuestion = 0;
+    filteredQuestions = questions.filter(q => q.level === level);
+    renderQuiz();
+    resetProgressBar();
+}
+
+function renderQuiz() {
     const quizDiv = document.getElementById('quiz');
     quizDiv.innerHTML = ''; // Clear previous quiz content
-    filteredQuestions = questions.filter(q => q.level === level);
     filteredQuestions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
+        questionDiv.style.display = index === currentQuestion ? 'block' : 'none';
         questionDiv.innerHTML = `
             <h1 class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
@@ -69,82 +157,91 @@ function loadQuiz(level) {
         `;
         quizDiv.appendChild(questionDiv);
     });
-    showQuestion(currentQuestion);
-}
-
-function showQuestion(index) {
-    const questions = document.querySelectorAll('.question');
-    questions.forEach((question, i) => {
-        question.style.display = i === index ? 'block' : 'none';
-    });
-    updateProgressBar(index, filteredQuestions.length);
-}
-
-function nextQuestion() {
-    if (currentQuestion < document.querySelectorAll('.question').length - 1) {
-        currentQuestion++;
-        showQuestion(currentQuestion);
-    }
-}
-
-function prevQuestion() {
-    if (currentQuestion > 0) {
-        currentQuestion--;
-        showQuestion(currentQuestion);
-    }
 }
 
 function selectAnswer(questionIndex, answerIndex, card) {
     const cards = document.querySelectorAll(`.question:nth-child(${questionIndex + 1}) .answer-card`);
-    cards.forEach(card => card.classList.remove('selected', 'correct', 'incorrect'));
-    card.classList.add('selected');
+    cards.forEach(card => card.style.pointerEvents = 'none'); // Disable all answer buttons
     const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
+    
     if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
         feedbackDiv.innerHTML = `Fantastic job, ${encodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
+        correctAttempts++;
     } else {
         card.classList.add('incorrect');
-        cards[filteredQuestions[questionIndex].correct].classList.add('correct');
         feedbackDiv.innerHTML = `No worries, ${encodeURIComponent(userName)}!`;
-        feedbackDiv.style.color = '#68AFFF'; // Blue color for incorrect answer
+        feedbackDiv.style.color = '#E94F3A'; // Red color for incorrect answer
+        wrongAttempts++;
     }
-}
 
-function submitQuiz() {
-    let score = 0;
-    filteredQuestions.forEach((q, index) => {
-        const selectedCard = document.querySelector(`.question:nth-child(${index + 1}) .answer-card.selected`);
-        if (selectedCard) {
-            const selectedAnswer = parseInt(selectedCard.dataset.selected);
-            if (selectedAnswer === q.correct) {
-                score++;
-            }
+    setTimeout(() => {
+        if (currentQuestion < filteredQuestions.length - 1) {
+            currentQuestion++;
+            renderQuiz();
+            updateProgressBar();
+        } else {
+            handleLevelCompletion();
         }
-    });
-    document.getElementById('score').innerText = `Your score is: ${score} / ${filteredQuestions.length}`;
-    if (score === filteredQuestions.length) {
-        document.getElementById('congratsMessage').style.display = 'block';
-    }
-    document.getElementById('playAgainBtn').style.display = 'inline';
+    }, 2000);
 }
 
-function updateProgressBar(index, total) {
+function handleLevelCompletion() {
+    updateProgressBar(true); // Ensure progress bar reaches 100% for the last question
+    if (currentLevel === 'easy') {
+        showLevelUpMessage('medium');
+    } else if (currentLevel === 'medium') {
+        showLevelUpMessage('hard');
+    } else {
+        submitQuiz();
+    }
+}
+
+function updateProgressBar(isLastQuestion = false) {
     const progress = document.getElementById('progress');
-    const progressPercentage = ((index + 1) / total) * 100;
+    const progressIncrement = 100 / filteredQuestions.length;
+    const progressPercentage = isLastQuestion ? 100 : currentQuestion * progressIncrement;
     progress.style.width = `${progressPercentage}%`;
 }
 
+function resetProgressBar() {
+    const progress = document.getElementById('progress');
+    progress.style.width = '0%';
+}
+
+function showLevelUpMessage(nextLevel) {
+    const gameContainer = document.getElementById('game-container');
+    gameContainer.innerHTML += `
+        <div id="levelUpMessage" class="level-up-message">
+            Excellent job, ${encodeURIComponent(userName)}!<br>Now let’s level up!
+        </div>
+    `;
+    setTimeout(() => {
+        document.getElementById('levelUpMessage').remove();
+        loadQuiz(nextLevel);
+    }, 2000);
+}
+
+function submitQuiz() {
+    const gameContainer = document.getElementById('game-container');
+    gameContainer.innerHTML = `
+        <h1 class="text-center">Quiz Completed!</h1>
+        <p class="text-center">Correct Attempts: ${correctAttempts}</p>
+        <p class="text-center">Wrong Attempts: ${wrongAttempts}</p>
+        <div class="text-center">
+            <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+        </div>
+    `;
+}
+
 function playAgain() {
-    currentQuestion = 0;
-    document.getElementById('score').innerText = '';
-    document.getElementById('congratsMessage').style.display = 'none';
-    document.getElementById('playAgainBtn').style.display = 'none';
-    loadQuiz(document.querySelector('input[name="level"]:checked').value);
+    location.reload(); // Refresh the page to start the game again
 }
 
 function selectLevel(level) {
-    currentQuestion = 0;
+    correctAttempts = 0;
+    wrongAttempts = 0;
     loadQuiz(level);
 }
 
