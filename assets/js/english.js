@@ -126,6 +126,7 @@ function loadQuiz(level) {
     filteredQuestions = questions.filter(q => q.level === level);
     renderQuiz();
     resetProgressBar();
+    updateLevelLabel();
 }
 
 function renderQuiz() {
@@ -208,6 +209,11 @@ function updateProgressBar(isLastQuestion = false) {
 function resetProgressBar() {
     const progress = document.getElementById('progress');
     progress.style.width = '0%';
+}
+
+function updateLevelLabel() {
+    const levelLabel = document.getElementById('levelLabel');
+    levelLabel.textContent = `${currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1)}`;
 }
 
 function showLevelUpMessage(nextLevel) {
