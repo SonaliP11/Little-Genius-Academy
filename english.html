@@ -16,8 +16,11 @@
 </head>
 <body>
     <div class="container game-container-wrap">
-        <div class="game-container" id="game-container">
+        <div class="game-container position-relative" id="game-container">
             <h1 class="text-center">English</h1>
+            <a id="backToSubjectsBtn" href="category.html" class="btn position-absolute top-0 end-0 m-5">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
             <div class="d-flex align-items-center mb-3 col-12">
                 <span id="levelLabel" class="p-3"></span>
                 <div class="progress" style="width: 100%;">
@@ -30,7 +33,6 @@
             <div class="score mt-3" id="score"></div>
             <div id="congratsMessage" style="display: none;">Congratulations! You got all the answers correct!</div>
             <button id="playAgainBtn" class="btn btn-primary mt-3" style="display: none;" onclick="playAgain()">Play Again</button>
-            <a href="category.html" class="btn btn-info mt-3">Back to Subjects</a>
         </div>
     </div>
     <!--Bootstrap JS script-->
