@@ -147,10 +147,10 @@ function renderQuiz() {
             <h1 id="question" class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
             <div class="row">
-                <div class="d-flex justify-content-center align-items-center col-12 col-md-4">
+                <div class="d-flex justify-content-center align-items-center col-12 col-md-4 col-lg-12">
                     <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
                 </div>
-                <div class="col-md-8">
+                <div class="col-12 col-md-8 col-lg-12">
                     <div class="answers-container d-flex flex-wrap">
                         ${q.answers.map((answer, i) => `
                             <div class="col-6 p-1 p-md-2">
@@ -295,7 +295,7 @@ function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
     if (gameContainer) {
         gameContainer.innerHTML += `
-            <div id="levelUpMessage" class="level-up-message h2 col-10 col-md-5 col-lg-7 col-xl-9 p-5">
+            <div id="levelUpMessage" class="level-up-message h2 col-10 col-md-9 p-5">
                 Excellent job, ${decodeURIComponent(userName)}!<br><br>Now let’s level up to ${nextLevel.charAt(0).toUpperCase() + nextLevel.slice(1)}!
             </div>
         `;
