@@ -56,8 +56,8 @@ Wireframes were created to plan the layout and structure of our platform. These 
 #### Desktop Wireframe Basic
 ![Wireframe basic](assets/images/wireframe1.png)
 
-#### Desktop Wireframe Background
-![Wireframe background](assets/images/wireframe2.png)
+#### Desktop High Fidelity Design
+![Desktop High Fidelity Design](assets/images/high-fidelity-design.png)
 
 
 ## Technologies Used
