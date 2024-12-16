@@ -240,6 +240,9 @@ These future features aim to create a more comprehensive and interactive learnin
 
 - Special thanks to the instructors and mentors - **Emma Lamont**, **Spencer**, and **Ruairidh MacArthur** for their invaluable guidance and support throughout the process.
 
+
+We would like to thank -**Mark Briscoe** for his valuable git guidance.
+
 - We would also like to express our gratitude to our amazing team for their hard work, dedication, and collaboration in bringing "Little Genius Academy" to life.
 
 
