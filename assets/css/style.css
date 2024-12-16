@@ -214,9 +214,6 @@ body {
 }
 
 @media (min-width: 992px) {
-    .container {
-        max-width: 960px; /* Max container width for large screens */
-    }
     .game-container-wrap {
         padding: 60px; /* Set padding for game-container-wrap */
     }
