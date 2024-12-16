@@ -1,6 +1,8 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Tilt+Warp&display=swap');
 
+/* General Styles */
 body {
     font-family: 'Patrick Hand', Arial, sans-serif;
     font-size: 24px;
@@ -29,7 +31,31 @@ body {
     font-size: 1.5rem;
 }
 
-/* Make the navbar sticky */
+.btn-primary {
+    display: block;
+    min-width: 24rem;
+    margin: 0 auto; /* Center align */
+    font-size: 2.5rem;
+    background-color: #68AFFF;
+    box-shadow: 0 8px 0 #489DF9;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    max-height: 114px; /* Set max-height for btn-primary */
+    height: 100vh;
+}
+
+.btn-primary:disabled {
+    background-color: #C6C5CD;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Navbar Styles */
 .navbar {
     position: fixed;
     top: 0;
@@ -37,7 +63,7 @@ body {
     z-index: 1000;
 }
 
-/* Game container style */
+/* Game Container Styles */
 .game-container {
     position: relative;
     max-width: 1200px;
@@ -52,13 +78,6 @@ body {
     overflow: hidden; /* Ensure contents do not exceed the border */
 }
 
-/* Apply 30px padding to .game-container on tablets */
-@media (max-width: 768px) and (min-width: 481px) {
-    .game-container {
-        padding: 30px;
-    }
-}
-
 .game-container-wrap {
     width: 100vw;
     height: 100vh;
@@ -67,21 +86,16 @@ body {
 }
 
 .game-title {
-    max-height: 5rem;
+    max-height: 91px; /* Set max-height for game-title */
 }
 
-@media (max-height: 800px) {
-    .game-container-wrap {
-        padding: 0.5rem; /* Adjust padding for smaller heights */
-    }
-}
-
-/* Logo style */
+/* Logo Styles */
 .logo {
     max-height: 10rem;
     width: auto;
 }
 
+/* Input Field Styles */
 .text-input {
     background-color: #E1EFFF;
     border-radius: 50px;
@@ -97,31 +111,7 @@ body {
     height: 100vh;
 }
 
-.btn-primary {
-    display: block;
-    min-width: 24rem;
-    margin: 0 auto; /* Center align */
-    font-size: 2.5rem;
-    background-color: #68AFFF;
-    box-shadow: 0 8px 0 #489DF9;
-    border: none;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    max-height: 130px;
-    height: 100vh;
-}
-
-.btn-primary:disabled {
-    background-color: #C6C5CD;
-    box-shadow: none;
-    cursor: not-allowed;
-}
-
-/* Category page style */
+/* Category Page Styles */
 .card-subject {
     font-family: 'Tilt Warp', Arial, sans-serif;
     font-size: 2.5rem;
@@ -142,12 +132,6 @@ body {
     max-width: 356px;
 }
 
-.card-subject.selected {
-    background-color: #FFD722;
-    color: #FFF;
-    -webkit-text-stroke: 2px #2E2E2E; /* Stroke for selected text */
-}
-
 .card-subject h2 {
     margin: 0;
     font-size: 2rem;
@@ -164,65 +148,10 @@ body {
     -webkit-text-stroke: 2px #2E2E2E; /* Stroke for hover text */
 }
 
-@media (max-width: 768px) {
-    .logo {
-        max-height: 9rem; /* Adjust this value as needed for smaller screens */
-    }
-    .game-container-wrap {
-        padding: 1rem; /* Adjust padding for mobile devices */
-    }
-    .game-container {
-        padding: 60px 15px; /* Adjust padding for mobile devices */
-        border-radius: 30px; /* Adjust border-radius for mobile devices */
-        justify-content: normal;
-        height: auto;
-        max-height: 618px; /* Set max-height for mobile devices */
-    }
-    .game-title {
-        max-width: 100%; /* Full width on mobile devices */
-    }
-    .btn-primary {
-        width: 100%; /* Full width on mobile devices */
-        height: 80px; /* Set height for btn-primary */
-        min-width: unset; /* Remove the min-width on mobile devices */
-        max-width: 281px; /* Set max-width for btn-primary */
-        border-radius: 20px; /* Set border-radius for btn-primary */
-    }
-    .text-input {
-        height: 80px; /* Set height for nameInput */
-        border-radius: 30px; /* Set border-radius for nameInput */
-        font-size: 2rem; /* Set font size for nameInput */
-    }
-    .h1 {
-        font-size: 2rem; /* Set font size for "Hello! What’s your name?" */
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .container {
-        max-width: 720px; /* Max container width for medium screens */
-    }
-    .game-container {
-        border-radius: 60px; /* Set border-radius for game-container */
-    }
-    .text-input {
-        font-size: 2.5rem; /* Set font size for nameInput */
-    }
-    .h1 {
-        font-size: 2.5rem; /* Set font size for "Hello! What’s your name?" */
-    }
-}
-
-@media (min-width: 992px) {
-    .game-container-wrap {
-        padding: 1rem; /* Set padding for game-container-wrap */
-    }
-    .game-container {
-        border-radius: 100px; /* Set border-radius for game-container */
-        width: 100%; /* Full width */
-        height: 100vh; /* Full viewport height */
-        max-height: 700px; /* Set max-height for game-container */
-    }
+.card-subject.selected {
+    background-color: #FFD722;
+    color: #FFF;
+    -webkit-text-stroke: 2px #2E2E2E; /* Stroke for selected text */
 }
 
 /* Center-align the input field */
@@ -242,7 +171,7 @@ body {
     padding: 0.5rem 1rem;
 }
 
-/* Progress bar style */
+/* Progress Bar Styles */
 .progress {
     height: 20px;
     background-color: #e9ecef;
@@ -257,7 +186,7 @@ body {
     border-radius: 0 10px 10px 0;
 }
 
-/* Quiz layout */
+/* Quiz Layout Styles */
 .quiz-container {
     width: 100%;
 }
@@ -274,7 +203,7 @@ body {
     flex: 2;
 }
 
-/* Answer card style */
+/* Answer Card Styles */
 .answer-card {
     background-color: white;
     border: 5px solid rgba(255, 215, 34, 0.5); /* #FFD722 with 50% opacity */
@@ -328,14 +257,14 @@ body {
     color: #E94F3A;
 }
 
-/* Feedback message style */
+/* Feedback Message Styles */
 .feedback {
     font-family: 'Tilt Warp', Arial, sans-serif;
     font-size: 1.2rem;
     margin-top: 10px;
 }
 
-/* Level-up message style */
+/* Level-up Message Styles */
 .level-up-message {
     position: absolute;
     top: 50%;
@@ -357,6 +286,7 @@ body {
     z-index: 999;
 }
 
+/* Star Rating Styles */
 .star-rating {
     display: inline-block;
     font-size: 2rem;
@@ -364,4 +294,86 @@ body {
 
 .star {
     margin: 0 0.1rem;
+}
+
+/* Utility Classes */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.max-height-130 {
+    max-height: 130px;
+}
+
+.height-100vh {
+    height: 100vh;
+}
+
+/* Media Queries */
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .logo {
+        max-height: 9rem; /* Adjust this value as needed for smaller screens */
+    }
+    .game-container-wrap {
+        padding: 1rem; /* Adjust padding for mobile devices */
+    }
+    .game-container {
+        padding: 60px 15px; /* Adjust padding for mobile devices */
+        border-radius: 30px; /* Adjust border-radius for mobile devices */
+        justify-content: normal;
+        height: auto;
+        max-height: 618px; /* Set max-height for mobile devices */
+    }
+    .game-title {
+        max-width: 100%; /* Full width on mobile devices */
+    }
+    .btn-primary {
+        width: 100%; /* Full width on mobile devices */
+        height: 80px; /* Set height for btn-primary */
+        min-width: unset; /* Remove the min-width on mobile devices */
+        max-width: 281px; /* Set max-width for btn-primary */
+        border-radius: 20px; /* Set border-radius for btn-primary */
+    }
+    .text-input {
+        height: 80px; /* Set height for nameInput */
+        border-radius: 30px; /* Set border-radius for nameInput */
+        font-size: 2rem; /* Set font size for nameInput */
+    }
+    .h1 {
+        font-size: 2rem; /* Set font size for "Hello! What’s your name?" */
+    }
+}
+
+/* Medium Screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px; /* Max container width for medium screens */
+    }
+    .game-container {
+        border-radius: 60px; /* Set border-radius for game-container */
+    }
+    .text-input {
+        font-size: 2.5rem; /* Set font size for nameInput */
+    }
+    .h1 {
+        font-size: 2.5rem; /* Set font size for "Hello! What’s your name?" */
+    }
+}
+
+/* Large Screens */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px; /* Max container width for large screens */
+    }
+    .game-container-wrap {
+        padding: 60px; /* Set padding for game-container-wrap */
+    }
+    .game-container {
+        border-radius: 100px; /* Set border-radius for game-container */
+        width: 100%; /* Full width */
+        height: 100vh; /* Full viewport height */
+        max-height: 757px; /* Set max-height for game-container */
+    }
 }
