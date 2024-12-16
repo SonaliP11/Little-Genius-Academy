@@ -217,7 +217,7 @@ Attaching the result of css validation
 
 #### Educational sites
  
-- Education Quizzes - Some questions were taken from there.
+- Education Quizzes, https://www.bbc.co.uk/bitesize - Some questions were taken from there.
 - Google search engine
 
 ## Future features
@@ -239,6 +239,9 @@ These future features aim to create a more comprehensive and interactive learnin
 - We would like to extend our heartfelt thanks to **Code Institute** for providing this incredible platform and the opportunity to develop "Little Genius Academy."
 
 - Special thanks to the instructors and mentors - **Emma Lamont**, **Spencer**, and **Ruairidh MacArthur** for their invaluable guidance and support throughout the process.
+
+
+We would like to thank -**Mark Briscoe** for his valuable git guidance.
 
 - We would also like to express our gratitude to our amazing team for their hard work, dedication, and collaboration in bringing "Little Genius Academy" to life.
 
