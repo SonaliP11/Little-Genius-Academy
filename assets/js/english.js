@@ -112,6 +112,9 @@ let filteredQuestions = [];
 let correctAttempts = 0;
 let wrongAttempts = 0;
 let currentLevel = 'easy';
+let incorrectQuestions = [];
+let unansweredQuestions = [];
+let originalTotalQuestions = 0;
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -122,8 +125,11 @@ const userName = getQueryParam('name');
 
 function loadQuiz(level) {
     currentLevel = level;
-    currentQuestion = 0;
+    currentQuestion = 0; // Ensure currentQuestion is set to 0 when a new level is loaded
     filteredQuestions = questions.filter(q => q.level === level);
+    originalTotalQuestions = filteredQuestions.length; // Store the original total question count
+    incorrectQuestions = []; // Reset incorrect questions for the new level
+    unansweredQuestions = [...filteredQuestions]; // Initialize unanswered questions
     renderQuiz();
     resetProgressBar();
     updateLevelLabel();
@@ -136,7 +142,7 @@ function renderQuiz() {
     filteredQuestions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
-        questionDiv.style.display = index === currentQuestion ? 'block' : 'none';
+        questionDiv.style.display = index === currentQuestion ? 'block' : 'none'; // Ensure the first question is displayed
         questionDiv.innerHTML = `
             <h1 class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
@@ -171,68 +177,119 @@ function selectAnswer(questionIndex, answerIndex, card) {
         feedbackDiv.innerHTML = `Fantastic job, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
         correctAttempts++;
+        updateProgressBar(); // Increment progress bar only on correct answer
+        // Remove the question from incorrectQuestions and unansweredQuestions if it was previously answered incorrectly
+        incorrectQuestions = incorrectQuestions.filter(q => q !== filteredQuestions[questionIndex]);
+        unansweredQuestions = unansweredQuestions.filter(q => q !== filteredQuestions[questionIndex]);
     } else {
         card.classList.add('incorrect');
         feedbackDiv.innerHTML = `No worries, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#E94F3A'; // Red color for incorrect answer
         wrongAttempts++;
+        // Add the wrongly answered question to the end of the queue if not already present
+        if (!incorrectQuestions.some(q => q.question === filteredQuestions[questionIndex].question)) {
+            incorrectQuestions.push(filteredQuestions[questionIndex]);
+        }
+        // Remove the question from unansweredQuestions
+        unansweredQuestions = unansweredQuestions.filter(q => q !== filteredQuestions[questionIndex]);
     }
 
+    // Update the progress bar after answering
+    updateProgressBar();
+
+    // Wait 2 seconds before showing the next question
     setTimeout(() => {
         if (currentQuestion < filteredQuestions.length - 1) {
-            currentQuestion++;
-            renderQuiz();
-            updateProgressBar();
+            currentQuestion++; // Move to the next question
+        } else if (unansweredQuestions.length > 0) {
+            // Cycle through unanswered questions
+            filteredQuestions = [...unansweredQuestions];
+            currentQuestion = 0; // Restart at the first unanswered question
+        } else if (incorrectQuestions.length > 0) {
+            // Cycle through incorrectly answered questions
+            filteredQuestions = [...incorrectQuestions];
+            currentQuestion = 0; // Restart at the first incorrect question
         } else {
-            handleLevelCompletion();
+            handleLevelCompletion(); // Check if it's time to transition to the next level
+            return;
         }
+        renderQuiz();
     }, 2000);
 }
 
 function handleLevelCompletion() {
-    updateProgressBar(true); // Ensure progress bar reaches 100% for the last question
-    if (currentLevel === 'easy') {
-        showLevelUpMessage('medium');
-    } else if (currentLevel === 'medium') {
-        showLevelUpMessage('hard');
+    if (correctAttempts === originalTotalQuestions) {
+        if (currentLevel === 'easy') {
+            showLevelUpMessage('medium');
+        } else if (currentLevel === 'medium') {
+            showLevelUpMessage('hard');
+        } else {
+            submitQuiz();
+        }
     } else {
-        submitQuiz();
+        currentQuestion = 0; // Reset to the first question
+        filteredQuestions = [...incorrectQuestions]; // Use a copy of incorrectQuestions
+        incorrectQuestions = [];  // Clear incorrect questions after moving forward
+        renderQuiz();
     }
 }
 
 function updateProgressBar(isLastQuestion = false) {
     const progress = document.getElementById('progress');
-    const progressIncrement = 100 / filteredQuestions.length;
-    const progressPercentage = isLastQuestion ? 100 : currentQuestion * progressIncrement;
+    const progressIncrement = 100 / originalTotalQuestions; // Use original total question count
+    const progressPercentage = isLastQuestion ? 100 : (correctAttempts * progressIncrement);
     progress.style.width = `${progressPercentage}%`;
+
+    // Check if progress bar has reached 100%
+    if (progressPercentage >= 100 && !isLastQuestion) {
+        handleLevelCompletion();
+    }
 }
 
 function resetProgressBar() {
     const progress = document.getElementById('progress');
-    progress.style.width = '0%';
+    if (progress) {
+        progress.style.width = '0%';
+    } else {
+        console.error('Progress element not found');
+    }
 }
 
 function updateLevelLabel() {
     const levelLabel = document.getElementById('levelLabel');
-    levelLabel.textContent = `${currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1)}`;
+    if (levelLabel) {
+        levelLabel.textContent = `${currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1)}`;
+    } else {
+        console.error('Level label element not found');
+    }
 }
 
 function updateBackToSubjectsLink() {
     const backToSubjectsBtn = document.getElementById('backToSubjectsBtn');
-    backToSubjectsBtn.href = `category.html?name=${encodeURIComponent(userName)}`;
+    if (backToSubjectsBtn) {
+        backToSubjectsBtn.href = `category.html?name=${encodeURIComponent(userName)}`;
+    } else {
+        console.error('Back to Subjects button not found');
+    }
 }
 
 function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
-    gameContainer.innerHTML += `
-        <div id="levelUpMessage" class="level-up-message">
-            Excellent job, ${decodeURIComponent(userName)}!<br>Now let’s level up!
-        </div>
-    `;
-    setTimeout(() => {
-        document.getElementById('levelUpMessage').remove();
-        loadQuiz(nextLevel);
-    }, 2000);
+    if (gameContainer) {
+        gameContainer.innerHTML += `
+            <div id="levelUpMessage" class="level-up-message">
+                Excellent job, ${decodeURIComponent(userName)}!<br>Now let’s level up to ${nextLevel.charAt(0).toUpperCase() + nextLevel.slice(1)}!
+            </div>
+        `;
+        setTimeout(() => {
+            document.getElementById('levelUpMessage').remove();
+            correctAttempts = 0; // Reset correct attempts for new level
+            resetProgressBar(); // Reset progress bar
+            loadQuiz(nextLevel); // Load the next level
+        }, 2000);
+    } else {
+        console.error('Game container element not found');
+    }
 }
 
 function submitQuiz() {
