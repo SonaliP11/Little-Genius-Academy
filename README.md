@@ -8,7 +8,7 @@ This project is built using HTML, CSS, and JavaScript. "Little Genius Academy" h
 
 ## Responsive Image
 
-Am I responsive image
+![Responsive Image](assets/images/responsive-mockup.png)
 
 ## User Experience (UX Design)
 
