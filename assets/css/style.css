@@ -282,52 +282,38 @@ body {
     border-radius: 3rem;
     text-align: center;
     z-index: 1000;
-    animation: levelUp 1s ease-in 0s 1 normal none;
+    animation: levelUp 1s ease-in-out 0s 1 normal forwards;
 }
 
 @keyframes levelUp {
-	0% {
-		animation-timing-function: ease-in;
-		opacity: 0;
-		transform: scale(0);
-	}
-
-	38% {
-		animation-timing-function: ease-out;
-		opacity: 1;
-		transform: scale(1);
-	}
-
-	55% {
-		animation-timing-function: ease-in;
-		transform: scale(0.7);
-	}
-
-	72% {
-		animation-timing-function: ease-out;
-		transform: scale(1);
-	}
-
-	81% {
-		animation-timing-function: ease-in;
-		transform: scale(0.84);
-	}
-
-	89% {
-		animation-timing-function: ease-out;
-		transform: scale(1);
-	}
-
-	95% {
-		animation-timing-function: ease-in;
-		transform: scale(0.95);
-	}
-
-	100% {
-		animation-timing-function: ease-out;
-		transform: scale(1);
-	}
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0); /* Ensure position stays consistent */
+    }
+    38% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    55% {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+    72% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    81% {
+        transform: translate(-50%, -50%) scale(0.84);
+    }
+    89% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    95% {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
+
 
 #levelLabel {
     font-family: 'Tilt Warp', Arial, sans-serif;
