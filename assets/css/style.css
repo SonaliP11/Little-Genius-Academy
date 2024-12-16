@@ -271,17 +271,62 @@ body {
 
 /* Level-up Message Styles */
 .level-up-message {
+    font-family: 'Tilt Warp', Arial, sans-serif;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    background-color: #489DF9;
+    background-color: rgba(72, 157, 249, .9);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 3rem;
     text-align: center;
-    font-size: 1.5rem;
     z-index: 1000;
+    animation: levelUp 1s ease-in 0s 1 normal none;
+}
+
+@keyframes levelUp {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: scale(0.7);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: scale(0.84);
+	}
+
+	89% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: scale(0.95);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
 }
 
 #levelLabel {

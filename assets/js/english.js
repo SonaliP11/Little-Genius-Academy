@@ -295,8 +295,8 @@ function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
     if (gameContainer) {
         gameContainer.innerHTML += `
-            <div id="levelUpMessage" class="level-up-message">
-                Excellent job, ${decodeURIComponent(userName)}!<br>Now let’s level up to ${nextLevel.charAt(0).toUpperCase() + nextLevel.slice(1)}!
+            <div id="levelUpMessage" class="level-up-message h2 col-10 col-md-5 col-lg-7 col-xl-9 p-5">
+                Excellent job, ${decodeURIComponent(userName)}!<br><br>Now let’s level up to ${nextLevel.charAt(0).toUpperCase() + nextLevel.slice(1)}!
             </div>
         `;
         setTimeout(() => {
