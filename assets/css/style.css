@@ -282,36 +282,50 @@ body {
     border-radius: 3rem;
     text-align: center;
     z-index: 1000;
-    animation: levelUp 2s ease 0s 1 normal none;
+    animation: levelUp 1s ease-in 0s 1 normal none;
 }
 
 @keyframes levelUp {
 	0% {
-		transform: scale3d(1, 1, 1);
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: scale(0);
 	}
 
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: scale(1);
 	}
 
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
+	55% {
+		animation-timing-function: ease-in;
+		transform: scale(0.7);
 	}
 
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
+	72% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
 	}
 
-	65% {
-		transform: scale3d(0.95, 1.05, 1);
+	81% {
+		animation-timing-function: ease-in;
+		transform: scale(0.84);
 	}
 
-	75% {
-		transform: scale3d(1.05, 0.95, 1);
+	89% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: scale(0.95);
 	}
 
 	100% {
-		transform: scale3d(1, 1, 1);
+		animation-timing-function: ease-out;
+		transform: scale(1);
 	}
 }
 
