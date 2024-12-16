@@ -339,23 +339,24 @@ function submitQuiz() {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML = `
     <div class="game-end-container">
-        <h1 class="h1 text-center">Well done, ${decodeURIComponent(userName)}!</h1>
-        <h2 id="subject-name" class="subject-title h2 text-center">${subjectName}</h2> <!-- Add subject name here -->
-        <div class="text-center">
-            ${renderStarRating()}
-        </div>
-        <p class="text-center mb-1">Wrong Attempts: ${totalWrongAttempts}</p>
-        <p id="final-score" class="text-center">Final Score: ${score}</p>
-        <div class="text-center">
-            <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
-            <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-link mt-4">
-                ← Back to Subjects
-            </a>
-            <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-lg rounded-circle position-absolute top-0 end-0 m-3 m-md-5">
-                <i class="fa-solid fa-xmark"></i>
-            </a>
-        </div>
-        </div>
+    <h1 class="h1 text-center">Well done, ${decodeURIComponent(userName)}!</h1>
+    <h2 id="subject-name" class="subject-title h2 text-center">${subjectName}</h2> <!-- Add subject name here -->
+    <div class="text-center">
+        ${renderStarRating()}
+    </div>
+    <p class="text-center mb-1">Wrong Attempts: ${totalWrongAttempts}</p>
+    <p id="final-score" class="text-center">Final Score: ${score}</p>
+    <div class="text-center">
+        <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+        <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-link mt-4">
+            ← Back to Subjects
+        </a>
+    </div>
+</div>
+<a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-lg rounded-circle position-absolute top-0 end-0 m-3 m-md-5">
+    <i class="fa-solid fa-xmark"></i>
+</a>
+
     `;
 }
 
