@@ -166,6 +166,11 @@ Validation of HTML/CSS/JavaScript,Lighthouse Audits,Bugs
 
 Achieved good scores for all the pages.Attaching the results of all the pages ![here](assets/images/LighthouseResult.png)
 
+## Mobile Lighthouse Testing
+
+![Mobile lighthouse](assets/images/lighthouseMobile.png)
+
+
 ### Manual Testing & Automatic Testing
 
 ### Validators
