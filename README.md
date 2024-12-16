@@ -180,7 +180,7 @@ Attaching the result of css validation
 
 #### HTML Validator
 
-![HTML Validator report](assets/images/HtmlReports.png)
+![HTML Validation](assets/images/HtmlReports.png)
 
 ## Credits
 
