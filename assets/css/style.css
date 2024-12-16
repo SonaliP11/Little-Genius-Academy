@@ -22,7 +22,7 @@ body {
 }
 
 .h1 {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .btn {
@@ -67,7 +67,7 @@ body {
 }
 
 .game-title {
-    max-height: 5rem;
+    max-height: 91px; /* Set max-height for game-title */
 }
 
 @media (max-height: 800px) {
@@ -111,7 +111,7 @@ body {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    max-height: 130px;
+    max-height: 114px; /* Set max-height for btn-primary */
     height: 100vh;
 }
 
@@ -137,9 +137,9 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    max-height: 223px;
+    max-height: 180px; /* Set max-height for card-subject */
     width: 100%;
-    max-width: 356px;
+    max-width: 100px; /* Set max-width for card-subject */
 }
 
 .card-subject.selected {
