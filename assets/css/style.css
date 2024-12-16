@@ -423,6 +423,6 @@ body {
         border-radius: 100px; /* Set border-radius for game-container */
         width: 100%; /* Full width */
         height: 100vh; /* Full viewport height */
-        max-height: 900px; /* Set max-height for game-container */
+        max-height: 800px; /* Set max-height for game-container */
     }
 }
