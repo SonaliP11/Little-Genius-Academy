@@ -326,7 +326,7 @@ function renderStarRating() {
     return `<div class="star-rating">${starsHtml}</div>`;
 }
 
-const subjectName = "English"; // Define the subject name
+const subjectName = "Maths"; // Define the subject name
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const subjectTitleElement = document.getElementById('subject-title');
