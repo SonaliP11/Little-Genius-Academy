@@ -186,6 +186,27 @@ Attaching the result of css validation
 
 ![JavaScript Validation](assets/images/JavascriptResults.png)
 
+
+## Manual Testing 
+
+| Feature       | TestcaseName                                                          | TestcaseSteps                                                                          | TestcaseExpectation                                                                                       | Priority | Result |
+|---------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|----------|--------|
+| Homepage      | Verify if the page is responsive                                      | Verify if the page is responsive                                                       | Check the website in various device like mobile,desktop,ipad                                              | P0       | PASS   |
+| Homepage      | Check if  input validation is done                                    | Enter inputs to name field                                                             | Input must be validated and successful.                                                                   | P0       | Pass   |
+| Homepage      | Check if  Play button is enable after entering the input              | Once the input is entererd in name field , Play button must be enabled.                | Play button must be enabled after entering  the name                                                      | P0       | PASS   |
+| Homepage      | Validate the page using html file validator                           | Use the validator to check the errors in the page.                                     | HTML validation must be successful with no errors                                                         | P2       | PASS   |
+| Homepage      | Validate the page using CSS editor                                    | Evaluate css file using css file validator                                             | Css file must pass with zero errors                                                                       | P1       | PASS   |
+| Homepage      | Check the performance of the page using Lighthouse developer tool     | Check each page, Click chrome developer tools, select lighthouse and run the analysis  | Page should achieve certain metric as expected.                                                           | P0       | PASS   |
+| Category Page | Entering name should take you to quiz Category page.                  | Entering name and start play button should land in category page.                      | Category page to choose subject must appear.                                                              | P1       | PASS   |
+| Category Page |  Subject options (ex: Maths and English)  should be available.        | Options to choose maths and english must be available                                  | English and Maths button must be available.                                                               | P1       | PASS   |
+| Category Page | Select Subject and start  button should be enabled.                   | Able to choose subject,select it and start the quiz                                    | Subject must be selected to proceed the quiz.                                                             | P0       | PASS   |
+| Quiz Page     | Selected subject based quiz must appear                               | Once the subject is choosen, User should be able to see the subject related questions  | Once the backup is enabled , the status of backup must be displayed as Active for the appropriate method. | P2       | PASS   |
+| Quiz Page     | If answered wrongly, the question must be repeated.                   | If the wrong answer is choosen,child gets turn to get it correct next time.            | Wrongly answered questions must be repeated.                                                              | P0       | PASS   |
+| Quiz Page     | Answering 5 questions correctly should take you to next Level of quiz | If five correct answers are given, user moves to next level.                           | Answering five questions correctly should take the game to next level.                                    | P1       | PASS   |
+| Quiz Page     | Try to Play again                                                     | Check if Play Again button is working fine.                                            | Option to Play Again must be available                                                                    | P0       | PASS   |
+| Quiz Page     | Try to Choose another subject                                         | USer Should be able to choose some other subject and start the game                    | Option to Choose another subject must be avaialble                                                        | P1       | PASS   |
+| Quiz Page     | Validate Js files using Jshint                                        | Validate javascript using jshint                                                       | No error must be observed.                                                                                | P0       | PASS   |
+
 ## Credits
 
 ### Content References
