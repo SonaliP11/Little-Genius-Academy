@@ -171,6 +171,10 @@ body {
     padding: 0.5rem 1rem;
 }
 
+#subject-title {
+    font-family: 'Tilt Warp', Arial, sans-serif; /* Set font-family for subject-title */
+}
+
 /* Progress Bar Styles */
 .progress {
     height: 20px;
@@ -347,6 +351,14 @@ body {
     .card-subject {
         border: 5px solid rgba(255, 232, 138, 0.5); /* Adjust border for mobile devices */
         max-height: 150px; /* Set max-height for card-subject on mobile devices */
+    }
+    #subject-title {
+        font-size: 1.5rem; /* Set font-size for subject-title */
+    }
+    .answer-card {
+        max-height: 80px; /* Set max-height for answer-card on mobile devices */
+        font-size: 1rem; /* Set font-size for answer-card on mobile devices */
+        border-radius: 15px; /* Set border-radius for answer-card on mobile devices */
     }
 }
 
