@@ -217,7 +217,7 @@ Attaching the result of css validation
 
 #### Educational sites
  
-- Education Quizzes - Some questions were taken from there.
+- Education Quizzes, https://www.bbc.co.uk/bitesize - Some questions were taken from there.
 - Google search engine
 
 ## Future features
