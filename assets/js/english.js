@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function submitQuiz() {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML = `
+    <div class="game-end-container">
         <h1 class="h1 text-center">Well done, ${decodeURIComponent(userName)}!</h1>
         <h2 id="subject-name" class="subject-title h2 text-center">${subjectName}</h2> <!-- Add subject name here -->
         <div class="text-center">
@@ -353,6 +354,7 @@ function submitQuiz() {
             <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-lg rounded-circle position-absolute top-0 end-0 m-3 m-md-5">
                 <i class="fa-solid fa-xmark"></i>
             </a>
+        </div>
         </div>
     `;
 }
