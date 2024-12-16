@@ -67,7 +67,7 @@ body {
 }
 
 .game-title {
-    max-height: 91px; /* Set max-height for game-title */
+    max-height: 5rem;
 }
 
 @media (max-height: 800px) {
@@ -111,7 +111,7 @@ body {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    max-height: 114px; /* Set max-height for btn-primary */
+    max-height: 130px;
     height: 100vh;
 }
 
@@ -137,9 +137,9 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    max-height: 180px; /* Set max-height for card-subject */
+    max-height: 223px;
     width: 100%;
-    max-width: 100px; /* Set max-width for card-subject */
+    max-width: 356px;
 }
 
 .card-subject.selected {
