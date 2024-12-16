@@ -81,7 +81,7 @@ const questions = [
         question: "Which one of the following is NOT an opinion?",
         answers: ["My sister is not very good at sports.", "What time is it?" ,"The moon is beautiful.", 
                    "Mountain climbing is an exciting activity."],
-        correct: 1,
+        correct: 3,
         image: "assets/images/mountain.jpg",
     },
     {
