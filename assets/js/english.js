@@ -107,13 +107,13 @@ const questions = [
     },
 ];
 
-
 let currentQuestion = 0;
 let filteredQuestions = [];
 let correctAttempts = 0;
 let wrongAttempts = 0;
 let currentLevel = 'easy';
 let incorrectQuestions = [];
+let unansweredQuestions = [];
 let originalTotalQuestions = 0;
 
 function getQueryParam(param) {
@@ -125,34 +125,24 @@ const userName = getQueryParam('name');
 
 function loadQuiz(level) {
     currentLevel = level;
-    currentQuestion = 0; // Make sure to set it to 0 to start with the first question
+    currentQuestion = 0; // Ensure currentQuestion is set to 0 when a new level is loaded
     filteredQuestions = questions.filter(q => q.level === level);
     originalTotalQuestions = filteredQuestions.length; // Store the original total question count
     incorrectQuestions = []; // Reset incorrect questions for the new level
-    console.log(filteredQuestions); // Debugging line to check the filtered questions
-    
-    // Render the first question only when the quiz is loaded
-    renderQuiz(); 
-    
+    unansweredQuestions = [...filteredQuestions]; // Initialize unanswered questions
+    renderQuiz();
     resetProgressBar();
     updateLevelLabel();
     updateBackToSubjectsLink();
 }
 
-
-
-
 function renderQuiz() {
-    console.log(`Rendering question ${currentQuestion}`); // Log to verify the current question index
-
     const quizDiv = document.getElementById('quiz');
     quizDiv.innerHTML = ''; // Clear previous quiz content
-
-    // Render only the current question based on `currentQuestion`
     filteredQuestions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
-        questionDiv.style.display = index === currentQuestion ? 'block' : 'none'; // Only display the current question
+        questionDiv.style.display = index === currentQuestion ? 'block' : 'none'; // Ensure the first question is displayed
         questionDiv.innerHTML = `
             <h1 class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
@@ -177,21 +167,21 @@ function renderQuiz() {
     });
 }
 
-
 function selectAnswer(questionIndex, answerIndex, card) {
     const cards = document.querySelectorAll(`.question:nth-child(${questionIndex + 1}) .answer-card`);
     cards.forEach(card => card.style.pointerEvents = 'none'); // Disable all answer buttons
     const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
     
-    // Handle correct answer
     if (answerIndex === filteredQuestions[questionIndex].correct) {
         card.classList.add('correct');
         feedbackDiv.innerHTML = `Fantastic job, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#4DB945'; // Green color for correct answer
         correctAttempts++;
-        // Remove the question from incorrectQuestions if it was previously answered incorrectly
+        updateProgressBar(); // Increment progress bar only on correct answer
+        // Remove the question from incorrectQuestions and unansweredQuestions if it was previously answered incorrectly
         incorrectQuestions = incorrectQuestions.filter(q => q !== filteredQuestions[questionIndex]);
-    } else { // Handle incorrect answer
+        unansweredQuestions = unansweredQuestions.filter(q => q !== filteredQuestions[questionIndex]);
+    } else {
         card.classList.add('incorrect');
         feedbackDiv.innerHTML = `No worries, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#E94F3A'; // Red color for incorrect answer
@@ -200,6 +190,8 @@ function selectAnswer(questionIndex, answerIndex, card) {
         if (!incorrectQuestions.some(q => q.question === filteredQuestions[questionIndex].question)) {
             incorrectQuestions.push(filteredQuestions[questionIndex]);
         }
+        // Remove the question from unansweredQuestions
+        unansweredQuestions = unansweredQuestions.filter(q => q !== filteredQuestions[questionIndex]);
     }
 
     // Update the progress bar after answering
@@ -208,54 +200,51 @@ function selectAnswer(questionIndex, answerIndex, card) {
     // Wait 2 seconds before showing the next question
     setTimeout(() => {
         if (currentQuestion < filteredQuestions.length - 1) {
-            currentQuestion++; // Move to the next question after user interaction
+            currentQuestion++; // Move to the next question
+        } else if (unansweredQuestions.length > 0) {
+            // Cycle through unanswered questions
+            filteredQuestions = [...unansweredQuestions];
+            currentQuestion = 0; // Restart at the first unanswered question
         } else if (incorrectQuestions.length > 0) {
             // Cycle through incorrectly answered questions
-            filteredQuestions = incorrectQuestions;
+            filteredQuestions = [...incorrectQuestions];
             currentQuestion = 0; // Restart at the first incorrect question
         } else {
             handleLevelCompletion(); // Check if it's time to transition to the next level
             return;
         }
-        renderQuiz(); // Update the quiz UI after each question is answered
+        renderQuiz();
     }, 2000);
 }
 
-
 function handleLevelCompletion() {
-    // Check if all the questions are correctly answered
     if (correctAttempts === originalTotalQuestions) {
-        // Display a level-up message and transition to the next level
         if (currentLevel === 'easy') {
             showLevelUpMessage('medium');
         } else if (currentLevel === 'medium') {
             showLevelUpMessage('hard');
         } else {
-            submitQuiz(); // Quiz completed after "hard" level
+            submitQuiz();
         }
     } else {
-        // Reset to the first question and cycle through incorrectly answered questions
-        currentQuestion = 0;
-        filteredQuestions = incorrectQuestions; // Focus on incorrect questions
+        currentQuestion = 0; // Reset to the first question
+        filteredQuestions = [...incorrectQuestions]; // Use a copy of incorrectQuestions
         incorrectQuestions = [];  // Clear incorrect questions after moving forward
         renderQuiz();
     }
 }
 
-
-
-function updateProgressBar() {
+function updateProgressBar(isLastQuestion = false) {
     const progress = document.getElementById('progress');
     const progressIncrement = 100 / originalTotalQuestions; // Use original total question count
-    const progressPercentage = (correctAttempts * progressIncrement);
+    const progressPercentage = isLastQuestion ? 100 : (correctAttempts * progressIncrement);
     progress.style.width = `${progressPercentage}%`;
 
-    // Automatically trigger level completion when progress reaches or exceeds 100%
-    if (progressPercentage >= 100) {
-        handleLevelCompletion(); // Transition to the next level
+    // Check if progress bar has reached 100%
+    if (progressPercentage >= 100 && !isLastQuestion) {
+        handleLevelCompletion();
     }
 }
-
 
 function resetProgressBar() {
     const progress = document.getElementById('progress');
