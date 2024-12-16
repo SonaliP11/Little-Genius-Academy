@@ -216,7 +216,7 @@ body {
     position: relative; /* Needed for positioning the icons */
     transition: background-color 0.3s, border-color 0.3s;
     height: 100vh;
-    max-height: 150px;
+    max-height: 180px;
     margin-bottom: 0;
 }
 
