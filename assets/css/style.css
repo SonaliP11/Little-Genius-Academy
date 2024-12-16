@@ -360,6 +360,16 @@ body {
         font-size: 1rem; /* Set font-size for answer-card on mobile devices */
         border-radius: 15px; /* Set border-radius for answer-card on mobile devices */
     }
+    .text-center h1 {
+        font-size: calc(1.275rem + .3vw); /* Set font size for question on mobile devices */
+    }
+    #levelLabel {
+        box-shadow: 4px 4px 0 #FDC851; /* Adjust box-shadow for mobile devices */
+        font-size: 1rem; /* Set font-size for levelLabel on mobile devices */
+    }
+    .progress {
+        height: 12px;
+    }
 }
 
 /* Medium Screens */

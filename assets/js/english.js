@@ -153,8 +153,8 @@ function renderQuiz() {
                 <div class="col-md-8">
                     <div class="answers-container d-flex flex-wrap">
                         ${q.answers.map((answer, i) => `
-                            <div class="col-6 p-2">
-                                <div class="answer-card h2 p-2 d-flex justify-content-center align-items-center" onclick="selectAnswer(${index}, ${i}, this)">
+                            <div class="col-6 p-1 p-md-2">
+                                <div class="answer-card h2 p-1 p-md-2 d-flex justify-content-center align-items-center" onclick="selectAnswer(${index}, ${i}, this)">
                                     ${answer}
                                 </div>
                             </div>
