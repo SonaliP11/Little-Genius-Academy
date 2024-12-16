@@ -81,7 +81,7 @@ body {
 .game-container-wrap {
     width: 100vw;
     height: 100vh;
-    padding: 2.5rem;
+    padding: 2.5rem 0;
     box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
@@ -360,7 +360,7 @@ body {
         font-size: 1rem; /* Set font-size for answer-card on mobile devices */
         border-radius: 15px; /* Set border-radius for answer-card on mobile devices */
     }
-    .text-center h1 {
+    #question {
         font-size: calc(1.275rem + .3vw); /* Set font size for question on mobile devices */
     }
     #levelLabel {
@@ -374,9 +374,6 @@ body {
 
 /* Medium Screens */
 @media (min-width: 768px) and (max-width: 991px) {
-    .container {
-        max-width: 720px; /* Max container width for medium screens */
-    }
     .game-container {
         border-radius: 60px; /* Set border-radius for game-container */
     }
@@ -390,9 +387,6 @@ body {
 
 /* Large Screens */
 @media (min-width: 992px) {
-    .game-container-wrap {
-        padding: 60px; /* Set padding for game-container-wrap */
-    }
     .game-container {
         border-radius: 100px; /* Set border-radius for game-container */
         width: 100%; /* Full width */

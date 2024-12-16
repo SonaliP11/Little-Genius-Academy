@@ -144,7 +144,7 @@ function renderQuiz() {
         questionDiv.className = 'question';
         questionDiv.style.display = index === currentQuestion ? 'block' : 'none'; // Ensure the first question is displayed
         questionDiv.innerHTML = `
-            <h1 class="text-center">${q.question}</h1>
+            <h1 id="question" class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
             <div class="row">
                 <div class="d-flex justify-content-center align-items-center col-12 col-md-4">
