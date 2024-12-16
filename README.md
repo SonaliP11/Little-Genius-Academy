@@ -157,21 +157,14 @@ Since this project is built with HTML, CSS, and JavaScript, you can simply open 
 
 By following these steps, you can effectively collaborate with your team and maintain a clean and organized codebase.
 
-
+git git 
 ### Testing
 
 Validation of HTML/CSS/JavaScript,Lighthouse Audits,Bugs
 
 ## Google Lighthouse Testing
 
-Achieved good scores for all the pages.Attaching the results of all the pages ![here](assets/images/Lighthouse%20Result.png)
-
-
-
-
-
-
-
+Achieved good scores for all the pages.Attaching the results of all the pages ![here](assets/images/LighthouseResult.png)
 
 ### Manual Testing & Automatic Testing
 
@@ -180,10 +173,14 @@ This code has been validated through HTML and CSS validators, and necessary chan
 
 #### CSS Validator
 
+Attaching the result of css validation
+
+![CSS validation report](assets/images/CSS-validator%20-result.png)
+
 
 #### HTML Validator
 
-
+![HTML Validation](assets/images/HtmlReports.png)
 
 ## Credits
 
@@ -191,7 +188,7 @@ This code has been validated through HTML and CSS validators, and necessary chan
 
 #### Copilot
 
-- I utilized GitHub Copilot to assist in generating content for the website.
+- We have utilized GitHub Copilot to assist in generating content for the website.
 
 #### Educational sites
  
