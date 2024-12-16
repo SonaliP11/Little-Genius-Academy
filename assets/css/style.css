@@ -171,7 +171,7 @@ body {
     padding: 0.5rem 1rem;
 }
 
-#subject-title {
+.subject-title {
     font-family: 'Tilt Warp', Arial, sans-serif; /* Set font-family for subject-title */
 }
 
@@ -216,7 +216,7 @@ body {
     position: relative; /* Needed for positioning the icons */
     transition: background-color 0.3s, border-color 0.3s;
     height: 100vh;
-    max-height: 150px;
+    max-height: 180px;
     margin-bottom: 0;
 }
 
@@ -282,52 +282,38 @@ body {
     border-radius: 3rem;
     text-align: center;
     z-index: 1000;
-    animation: levelUp 1s ease-in 0s 1 normal none;
+    animation: levelUp 1s ease-in-out 0s 1 normal forwards;
 }
 
 @keyframes levelUp {
-	0% {
-		animation-timing-function: ease-in;
-		opacity: 0;
-		transform: scale(0);
-	}
-
-	38% {
-		animation-timing-function: ease-out;
-		opacity: 1;
-		transform: scale(1);
-	}
-
-	55% {
-		animation-timing-function: ease-in;
-		transform: scale(0.7);
-	}
-
-	72% {
-		animation-timing-function: ease-out;
-		transform: scale(1);
-	}
-
-	81% {
-		animation-timing-function: ease-in;
-		transform: scale(0.84);
-	}
-
-	89% {
-		animation-timing-function: ease-out;
-		transform: scale(1);
-	}
-
-	95% {
-		animation-timing-function: ease-in;
-		transform: scale(0.95);
-	}
-
-	100% {
-		animation-timing-function: ease-out;
-		transform: scale(1);
-	}
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0); /* Ensure position stays consistent */
+    }
+    38% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    55% {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+    72% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    81% {
+        transform: translate(-50%, -50%) scale(0.84);
+    }
+    89% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    95% {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
+
 
 #levelLabel {
     font-family: 'Tilt Warp', Arial, sans-serif;
@@ -398,7 +384,7 @@ body {
         border: 5px solid rgba(255, 232, 138, 0.5); /* Adjust border for mobile devices */
         max-height: 150px; /* Set max-height for card-subject on mobile devices */
     }
-    #subject-title {
+    .subject-title {
         font-size: 1.5rem; /* Set font-size for subject-title */
     }
     .answer-card {
@@ -437,6 +423,6 @@ body {
         border-radius: 100px; /* Set border-radius for game-container */
         width: 100%; /* Full width */
         height: 100vh; /* Full viewport height */
-        max-height: 757px; /* Set max-height for game-container */
+        max-height: 800px; /* Set max-height for game-container */
     }
 }

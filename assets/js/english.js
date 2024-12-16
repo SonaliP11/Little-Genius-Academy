@@ -81,7 +81,7 @@ const questions = [
         question: "Which one of the following is NOT an opinion?",
         answers: ["My sister is not very good at sports.", "What time is it?" ,"The moon is beautiful.", 
                    "Mountain climbing is an exciting activity."],
-        correct: 3,
+        correct: 1,
         image: "assets/images/mountain.jpg",
     },
     {
@@ -146,11 +146,11 @@ function renderQuiz() {
         questionDiv.innerHTML = `
             <h1 id="question" class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
-            <div class="row">
-                <div class="d-flex justify-content-center align-items-center col-12 col-md-4">
+            <div class="row d-flex justify-content-center align-items-center col-12">
+                <div class="d-flex justify-content-center align-items-center col-12 col-md-12 col-lg-4">
                     <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
                 </div>
-                <div class="col-md-8">
+                <div class="col-12 col-md-12 col-lg-6">
                     <div class="answers-container d-flex flex-wrap">
                         ${q.answers.map((answer, i) => `
                             <div class="col-6 p-1 p-md-2">
@@ -295,7 +295,7 @@ function showLevelUpMessage(nextLevel) {
     const gameContainer = document.getElementById('game-container');
     if (gameContainer) {
         gameContainer.innerHTML += `
-            <div id="levelUpMessage" class="level-up-message h2 col-10 col-md-5 col-lg-7 col-xl-9 p-5">
+            <div id="levelUpMessage" class="level-up-message h2 col-10 col-md-9 p-5">
                 Excellent job, ${decodeURIComponent(userName)}!<br><br>Now let’s level up to ${nextLevel.charAt(0).toUpperCase() + nextLevel.slice(1)}!
             </div>
         `;
@@ -339,11 +339,11 @@ function submitQuiz() {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML = `
         <h1 class="h1 text-center">Well done, ${decodeURIComponent(userName)}!</h1>
-        <h2 id="subject-name" class="h2 text-center">${subjectName}</h2> <!-- Add subject name here -->
+        <h2 id="subject-name" class="subject-title h2 text-center">${subjectName}</h2> <!-- Add subject name here -->
         <div class="text-center">
             ${renderStarRating()}
         </div>
-        <p class="text-center">Wrong Attempts: ${totalWrongAttempts}</p>
+        <p class="text-center mb-1">Wrong Attempts: ${totalWrongAttempts}</p>
         <p id="final-score" class="text-center">Final Score: ${score}</p>
         <div class="text-center">
             <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
