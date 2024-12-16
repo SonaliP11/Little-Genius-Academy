@@ -146,7 +146,7 @@ function renderQuiz() {
         questionDiv.innerHTML = `
             <h1 id="question" class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
-            <div class="row">
+            <div class="row d-flex justify-content-center align-items-center col-12">
                 <div class="d-flex justify-content-center align-items-center col-12 col-md-12 col-lg-4">
                     <img src="${q.image}" alt="Question Image" class="img-fluid mb-3">
                 </div>
