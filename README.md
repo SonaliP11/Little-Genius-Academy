@@ -197,11 +197,23 @@ Attaching the result of css validation
 
 ## Future features
 
+We have several exciting features planned for future development to enhance the learning experience and provide more value to parents and educators:
+
+- **Feedback to Parents**: Implement a system where parents receive regular feedback on their child's progress, strengths, and areas for improvement. This will help parents stay informed and involved in their child's learning journey.
+
+- **Teacher Assignments**: Allow teachers to assign specific quizzes and challenges to their students. This feature will enable educators to tailor the learning experience to each child's needs and track their progress more effectively.
+
+- **Parental Evaluation Tools**: Develop tools that enable parents to evaluate their child's skill level and understanding of various concepts. This will help parents identify areas where their child may need additional support or practice.
+
+- **Expanded Content Library**: Continuously expand our library of quizzes, challenges, and educational games to cover a wider range of topics and difficulty levels. This will ensure that children always have new and exciting content to explore.
+
+These future features aim to create a more comprehensive and interactive learning environment, supporting the educational growth of children while keeping parents and teachers actively involved.
+
 ## Acknowledgement
  
-- We would like to extend our heartfelt thanks to Code Institute for providing this incredible platform and the opportunity to develop "Little Genius Academy."
+- We would like to extend our heartfelt thanks to **Code Institute** for providing this incredible platform and the opportunity to develop "Little Genius Academy."
 
-- Special thanks to the instructors and mentors - Emma Lamont, Spencer and Ruairidh MacArthur for their invaluable guidance and support throughout the process.
+- Special thanks to the instructors and mentors - **Emma Lamont**, **Spencer**, and **Ruairidh MacArthur** for their invaluable guidance and support throughout the process.
 
 - We would also like to express our gratitude to our amazing team for their hard work, dedication, and collaboration in bringing "Little Genius Academy" to life.
 
