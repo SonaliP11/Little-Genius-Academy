@@ -158,7 +158,20 @@ Since this project is built with HTML, CSS, and JavaScript, you can simply open 
 By following these steps, you can effectively collaborate with your team and maintain a clean and organized codebase.
 
 
-## Testing
+### Testing
+
+Validation of HTML/CSS/JavaScript,Lighthouse Audits,Bugs
+
+## Google Lighthouse Testing
+
+Achieved good scores for all the pages.Attaching the results of all the pages ![here](assets/images/Lighthouse%20Result.png)
+
+
+
+
+
+
+
 
 ### Manual Testing & Automatic Testing
 
