@@ -144,7 +144,7 @@ function renderQuiz() {
         questionDiv.className = 'question';
         questionDiv.style.display = index === currentQuestion ? 'block' : 'none'; // Ensure the first question is displayed
         questionDiv.innerHTML = `
-            <h1 class="text-center">${q.question}</h1>
+            <h1 id="question" class="text-center">${q.question}</h1>
             <div id="feedback-${index}" class="feedback text-center mt-3"></div>
             <div class="row">
                 <div class="d-flex justify-content-center align-items-center col-12 col-md-4">
@@ -153,8 +153,8 @@ function renderQuiz() {
                 <div class="col-md-8">
                     <div class="answers-container d-flex flex-wrap">
                         ${q.answers.map((answer, i) => `
-                            <div class="col-12 col-md-6 p-2">
-                                <div class="answer-card h2 p-2 d-flex justify-content-center align-items-center" onclick="selectAnswer(${index}, ${i}, this)">
+                            <div class="col-6 p-1 p-md-2">
+                                <div class="answer-card h2 p-1 p-md-2 d-flex justify-content-center align-items-center" onclick="selectAnswer(${index}, ${i}, this)">
                                     ${answer}
                                 </div>
                             </div>

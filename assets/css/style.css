@@ -1,6 +1,8 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Tilt+Warp&display=swap');
 
+/* General Styles */
 body {
     font-family: 'Patrick Hand', Arial, sans-serif;
     font-size: 24px;
@@ -22,79 +24,11 @@ body {
 }
 
 .h1 {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .btn {
     font-size: 1.5rem;
-}
-
-/* Make the navbar sticky */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-/* Game container style */
-.game-container {
-    position: relative;
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px;
-    background-color: #fff;
-    border-radius: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Ensure contents do not exceed the border */
-}
-
-/* Apply 30px padding to .game-container on tablets */
-@media (max-width: 768px) and (min-width: 481px) {
-    .game-container {
-        padding: 30px;
-    }
-}
-
-.game-container-wrap {
-    width: 100vw;
-    height: 100vh;
-    padding: 2.5rem;
-    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
-}
-
-.game-title {
-    max-height: 5rem;
-}
-
-@media (max-height: 800px) {
-    .game-container-wrap {
-        padding: 0.5rem; /* Adjust padding for smaller heights */
-    }
-}
-
-/* Logo style */
-.logo {
-    max-height: 10rem;
-    width: auto;
-}
-
-.text-input {
-    background-color: #E1EFFF;
-    border-radius: 50px;
-    font-size: 4rem;
-    padding: .5rem;
-    border: 0;
-    width: 100%;
-    max-width: 572px;
-    box-sizing: border-box;
-    text-align: center; /* Center the text */
-    color: #2E2E2E; /* Set the font color */
-    max-height: 156px;
-    height: 100vh;
 }
 
 .btn-primary {
@@ -111,7 +45,7 @@ body {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    max-height: 130px;
+    max-height: 114px; /* Set max-height for btn-primary */
     height: 100vh;
 }
 
@@ -121,7 +55,63 @@ body {
     cursor: not-allowed;
 }
 
-/* Category page style */
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Game Container Styles */
+.game-container {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure contents do not exceed the border */
+}
+
+.game-container-wrap {
+    width: 100vw;
+    height: 100vh;
+    padding: 2.5rem 0;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.game-title {
+    max-height: 91px; /* Set max-height for game-title */
+}
+
+/* Logo Styles */
+.logo {
+    max-height: 10rem;
+    width: auto;
+}
+
+/* Input Field Styles */
+.text-input {
+    background-color: #E1EFFF;
+    border-radius: 50px;
+    font-size: 4rem;
+    padding: .5rem;
+    border: 0;
+    width: 100%;
+    max-width: 572px;
+    box-sizing: border-box;
+    text-align: center; /* Center the text */
+    color: #2E2E2E; /* Set the font color */
+    max-height: 156px;
+    height: 100vh;
+}
+
+/* Category Page Styles */
 .card-subject {
     font-family: 'Tilt Warp', Arial, sans-serif;
     font-size: 2.5rem;
@@ -142,12 +132,6 @@ body {
     max-width: 356px;
 }
 
-.card-subject.selected {
-    background-color: #FFD722;
-    color: #FFF;
-    -webkit-text-stroke: 2px #2E2E2E; /* Stroke for selected text */
-}
-
 .card-subject h2 {
     margin: 0;
     font-size: 2rem;
@@ -164,65 +148,10 @@ body {
     -webkit-text-stroke: 2px #2E2E2E; /* Stroke for hover text */
 }
 
-@media (max-width: 768px) {
-    .logo {
-        max-height: 9rem; /* Adjust this value as needed for smaller screens */
-    }
-    .game-container-wrap {
-        padding: 1rem; /* Adjust padding for mobile devices */
-    }
-    .game-container {
-        padding: 60px 15px; /* Adjust padding for mobile devices */
-        border-radius: 30px; /* Adjust border-radius for mobile devices */
-        justify-content: normal;
-        height: auto;
-        max-height: 618px; /* Set max-height for mobile devices */
-    }
-    .game-title {
-        max-width: 100%; /* Full width on mobile devices */
-    }
-    .btn-primary {
-        width: 100%; /* Full width on mobile devices */
-        height: 80px; /* Set height for btn-primary */
-        min-width: unset; /* Remove the min-width on mobile devices */
-        max-width: 281px; /* Set max-width for btn-primary */
-        border-radius: 20px; /* Set border-radius for btn-primary */
-    }
-    .text-input {
-        height: 80px; /* Set height for nameInput */
-        border-radius: 30px; /* Set border-radius for nameInput */
-        font-size: 2rem; /* Set font size for nameInput */
-    }
-    .h1 {
-        font-size: 2rem; /* Set font size for "Hello! What’s your name?" */
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .container {
-        max-width: 720px; /* Max container width for medium screens */
-    }
-    .game-container {
-        border-radius: 60px; /* Set border-radius for game-container */
-    }
-    .text-input {
-        font-size: 2.5rem; /* Set font size for nameInput */
-    }
-    .h1 {
-        font-size: 2.5rem; /* Set font size for "Hello! What’s your name?" */
-    }
-}
-
-@media (min-width: 992px) {
-    .game-container-wrap {
-        padding: 1rem; /* Set padding for game-container-wrap */
-    }
-    .game-container {
-        border-radius: 100px; /* Set border-radius for game-container */
-        width: 100%; /* Full width */
-        height: 100vh; /* Full viewport height */
-        max-height: 700px; /* Set max-height for game-container */
-    }
+.card-subject.selected {
+    background-color: #FFD722;
+    color: #FFF;
+    -webkit-text-stroke: 2px #2E2E2E; /* Stroke for selected text */
 }
 
 /* Center-align the input field */
@@ -242,7 +171,11 @@ body {
     padding: 0.5rem 1rem;
 }
 
-/* Progress bar style */
+#subject-title {
+    font-family: 'Tilt Warp', Arial, sans-serif; /* Set font-family for subject-title */
+}
+
+/* Progress Bar Styles */
 .progress {
     height: 20px;
     background-color: #e9ecef;
@@ -257,7 +190,7 @@ body {
     border-radius: 0 10px 10px 0;
 }
 
-/* Quiz layout */
+/* Quiz Layout Styles */
 .quiz-container {
     width: 100%;
 }
@@ -274,7 +207,7 @@ body {
     flex: 2;
 }
 
-/* Answer card style */
+/* Answer Card Styles */
 .answer-card {
     background-color: white;
     border: 5px solid rgba(255, 215, 34, 0.5); /* #FFD722 with 50% opacity */
@@ -328,14 +261,14 @@ body {
     color: #E94F3A;
 }
 
-/* Feedback message style */
+/* Feedback Message Styles */
 .feedback {
     font-family: 'Tilt Warp', Arial, sans-serif;
     font-size: 1.2rem;
     margin-top: 10px;
 }
 
-/* Level-up message style */
+/* Level-up Message Styles */
 .level-up-message {
     position: absolute;
     top: 50%;
@@ -357,6 +290,7 @@ body {
     z-index: 999;
 }
 
+/* Star Rating Styles */
 .star-rating {
     display: inline-block;
     font-size: 2rem;
@@ -364,4 +298,99 @@ body {
 
 .star {
     margin: 0 0.1rem;
+}
+
+/* Utility Classes */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.max-height-130 {
+    max-height: 130px;
+}
+
+.height-100vh {
+    height: 100vh;
+}
+
+/* Media Queries */
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .logo {
+        max-height: 9rem; /* Adjust this value as needed for smaller screens */
+    }
+    .game-container-wrap {
+        padding: 1rem; /* Adjust padding for mobile devices */
+    }
+    .game-container {
+        padding: 60px 15px; /* Adjust padding for mobile devices */
+        border-radius: 30px; /* Adjust border-radius for mobile devices */
+        justify-content: normal;
+        height: auto;
+        max-height: 618px; /* Set max-height for mobile devices */
+    }
+    .game-title {
+        max-width: 100%; /* Full width on mobile devices */
+    }
+    .btn-primary {
+        width: 100%; /* Full width on mobile devices */
+        height: 80px; /* Set height for btn-primary */
+        min-width: unset; /* Remove the min-width on mobile devices */
+        max-width: 281px; /* Set max-width for btn-primary */
+        border-radius: 20px; /* Set border-radius for btn-primary */
+    }
+    .text-input {
+        height: 80px; /* Set height for nameInput */
+        border-radius: 30px; /* Set border-radius for nameInput */
+        font-size: 2rem; /* Set font size for nameInput */
+    }
+    .h1 {
+        font-size: 2rem; /* Set font size for "Hello! What’s your name?" */
+    }
+    .card-subject {
+        border: 5px solid rgba(255, 232, 138, 0.5); /* Adjust border for mobile devices */
+        max-height: 150px; /* Set max-height for card-subject on mobile devices */
+    }
+    #subject-title {
+        font-size: 1.5rem; /* Set font-size for subject-title */
+    }
+    .answer-card {
+        max-height: 80px; /* Set max-height for answer-card on mobile devices */
+        font-size: 1rem; /* Set font-size for answer-card on mobile devices */
+        border-radius: 15px; /* Set border-radius for answer-card on mobile devices */
+    }
+    #question {
+        font-size: calc(1.275rem + .3vw); /* Set font size for question on mobile devices */
+    }
+    #levelLabel {
+        box-shadow: 4px 4px 0 #FDC851; /* Adjust box-shadow for mobile devices */
+        font-size: 1rem; /* Set font-size for levelLabel on mobile devices */
+    }
+    .progress {
+        height: 12px;
+    }
+}
+
+/* Medium Screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .game-container {
+        border-radius: 60px; /* Set border-radius for game-container */
+    }
+    .text-input {
+        font-size: 2.5rem; /* Set font size for nameInput */
+    }
+    .h1 {
+        font-size: 2.5rem; /* Set font size for "Hello! What’s your name?" */
+    }
+}
+
+/* Large Screens */
+@media (min-width: 992px) {
+    .game-container {
+        border-radius: 100px; /* Set border-radius for game-container */
+        width: 100%; /* Full width */
+        height: 100vh; /* Full viewport height */
+        max-height: 757px; /* Set max-height for game-container */
+    }
 }
