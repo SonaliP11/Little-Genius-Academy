@@ -88,7 +88,7 @@ const questions = [
         level: "hard",
         question: "Which one of the following is an opinion?",
         answers: ["The gallery is free to enter.", "The sun is shining.", "Clouds are grey.", "The train is late."],
-        correct: 1,
+        correct: 0,
         image: "assets/images/art.jpg",
     },
     {
@@ -167,6 +167,18 @@ function renderQuiz() {
     });
 }
 
+let totalWrongAttempts = 0;  // Track wrong attempts across all levels
+
+// Keep track of wrong attempts for each level
+let wrongAttemptsPerLevel = {
+    easy: 0,
+    medium: 0,
+    hard: 0
+};
+
+let score = 1500; // Start with a perfect score of 1500
+let pointsDeduction = 100; // Points deducted for each wrong attempt
+
 function selectAnswer(questionIndex, answerIndex, card) {
     const cards = document.querySelectorAll(`.question:nth-child(${questionIndex + 1}) .answer-card`);
     cards.forEach(card => card.style.pointerEvents = 'none'); // Disable all answer buttons
@@ -186,6 +198,12 @@ function selectAnswer(questionIndex, answerIndex, card) {
         feedbackDiv.innerHTML = `No worries, ${decodeURIComponent(userName)}!`;
         feedbackDiv.style.color = '#E94F3A'; // Red color for incorrect answer
         wrongAttempts++;
+        wrongAttemptsPerLevel[currentLevel]++; // Increment wrong attempts for the current level
+        totalWrongAttempts++;  // Increment total wrong attempts
+
+        // Deduct points for the wrong attempt
+        score -= pointsDeduction;
+
         // Add the wrongly answered question to the end of the queue if not already present
         if (!incorrectQuestions.some(q => q.question === filteredQuestions[questionIndex].question)) {
             incorrectQuestions.push(filteredQuestions[questionIndex]);
@@ -292,12 +310,41 @@ function showLevelUpMessage(nextLevel) {
     }
 }
 
+function renderStarRating() {
+    const maxStars = 5;
+    const starRating = Math.max(0, Math.min(maxStars, Math.floor(score / 300))); // Use 'score' instead of 'totalScore'
+    let starsHtml = '';
+
+    for (let i = 0; i < maxStars; i++) {
+        if (i < starRating) {
+            starsHtml += '<span class="h1 star" style="color: #FFD722;">&#9733;</span>'; // Gold star
+        } else {
+            starsHtml += '<span class="h1 star" style="color: #EEEEEE;">&#9733;</span>'; // Grey star
+        }
+    }
+
+    return `<div class="star-rating">${starsHtml}</div>`;
+}
+
+const subjectName = "English"; // Define the subject name
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const subjectTitleElement = document.getElementById('subject-title');
+    if (subjectTitleElement) {
+        subjectTitleElement.innerHTML = subjectName;
+    }
+});
+
 function submitQuiz() {
     const gameContainer = document.getElementById('game-container');
     gameContainer.innerHTML = `
-        <h1 class="h1 text-center">Quiz Completed!</h1>
-        <p class="text-center">Correct Attempts: ${correctAttempts}</p>
-        <p class="text-center">Wrong Attempts: ${wrongAttempts}</p>
+        <h1 class="h1 text-center">Well done, ${decodeURIComponent(userName)}!</h1>
+        <h2 class="h2 text-center">${subjectName}</h2> <!-- Add subject name here -->
+        <div class="text-center">
+            ${renderStarRating()}
+        </div>
+        <p class="text-center">Wrong Attempts: ${totalWrongAttempts}</p>
+        <p class="text-center">Total Score: ${score}</p>
         <div class="text-center">
             <button id="playAgainBtn" class="btn btn-primary" onclick="playAgain()">Play Again!</button>
             <a id="backToSubjectsBtn" href="category.html?name=${encodeURIComponent(userName)}" class="btn btn-link mt-4">
@@ -309,6 +356,30 @@ function submitQuiz() {
         </div>
     `;
 }
+
+function calculatePercentage() {
+    return (correctAttempts / originalTotalQuestions) * 100;
+}
+
+function getStarRating() {
+    const percentage = calculatePercentage();
+    let stars = '';
+
+    // Determine the number of stars
+    const starCount = Math.round(percentage / 20); // For 100%, it's 5 stars, for 80%, it's 4 stars, etc.
+    
+    // Create the stars
+    for (let i = 0; i < 5; i++) {
+        if (i < starCount) {
+            stars += '<i class="fa-solid fa-star"></i>';  // Full star
+        } else {
+            stars += '<i class="fa-regular fa-star"></i>';  // Empty star
+        }
+    }
+
+    return stars;
+}
+
 
 function playAgain() {
     location.reload(); // Refresh the page to start the game again

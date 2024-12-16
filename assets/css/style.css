@@ -324,3 +324,12 @@ body {
     box-shadow: 8px 8px 0 #FDC851;
     z-index: 999;
 }
+
+.star-rating {
+    display: inline-block;
+    font-size: 2rem;
+}
+
+.star {
+    margin: 0 0.1rem;
+}
