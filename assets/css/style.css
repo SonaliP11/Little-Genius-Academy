@@ -215,7 +215,7 @@ body {
 
 @media (min-width: 992px) {
     .game-container-wrap {
-        padding: 60px; /* Set padding for game-container-wrap */
+        padding: 1rem; /* Set padding for game-container-wrap */
     }
     .game-container {
         border-radius: 100px; /* Set border-radius for game-container */
