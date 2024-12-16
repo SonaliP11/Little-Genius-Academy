@@ -175,12 +175,16 @@ This code has been validated through HTML and CSS validators, and necessary chan
 
 Attaching the result of css validation
 
-![CSS validation report](assets/images/CSS-validator%20-result.png)
+![CSS validation](assets/images/CSS-validator%20-result.png)
 
 
 #### HTML Validator
 
 ![HTML Validation](assets/images/HtmlReports.png)
+
+#### JavaScript Validator
+
+![JavaScript Validation](assets/images/JavascriptResults.png)
 
 ## Credits
 
